@@ -236,14 +236,14 @@ const styles = StyleSheet.create({
       return(
         <AniScrollView  animation="fadeIn" duration={500} delay={100} style={styles.list}>
             <View style={styles.groupSpace}/>
-            {this._renderHeadRow(this.props.picker)}
+            {/*{this._renderHeadRow(this.props.picker)}*/}
 
             <View style={styles.groupSpace}/>
           {/*{this._renderRow('账号',this.props.userData.mobilePhoneNumber ,() => {
 
           })}*/}
             <View style={styles.groupSpace}/>
-          {this._renderRow('昵称',this.props.userData.username, () => {
+          {this._renderRow('我的账户',this.props.userData.username, () => {
               // NavigationManager.goToPage("NickName");
               this.props.push("NickName");
           })}
@@ -254,14 +254,41 @@ const styles = StyleSheet.create({
 
 
 
-          {/*<View style={styles.groupSpace}>*/}
-          {/*</View>*/}
-          {/*<View style={styles.group}>*/}
-          {/*{this._renderRow('*修改密码',"" ,() => {*/}
-              {/*// NavigationManager.goToPage("AlterPwd");*/}
-              {/*this.props.push("AlterPwd");*/}
-          {/*})}*/}
-          {/*</View>*/}
+          <View style={styles.groupSpace}>
+          </View>
+          <View style={styles.group}>
+          {this._renderRow('修改密码',"" ,() => {
+              // NavigationManager.goToPage("AlterPwd");
+              this.props.push("AlterPwd");
+          })}
+          </View>
+
+            <View style={styles.groupSpace}>
+            </View>
+            <View style={styles.group}>
+                {this._renderRow('个人信息',"" ,() => {
+                    // NavigationManager.goToPage("AlterPwd");
+                    this.props.push("AlterPwd");
+                })}
+            </View>
+
+            <View style={styles.groupSpace}>
+            </View>
+            <View style={styles.group}>
+                {this._renderRow('信用信息',"" ,() => {
+                    // NavigationManager.goToPage("AlterPwd");
+                    this.props.push("AlterPwd");
+                })}
+            </View>
+
+            <View style={styles.groupSpace}>
+            </View>
+            <View style={styles.group}>
+                {this._renderRow('我的资产',"" ,() => {
+                    // NavigationManager.goToPage("AlterPwd");
+                    this.props.push("AlterPwd");
+                })}
+            </View>
         </AniScrollView>
       );
   }

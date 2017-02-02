@@ -14,12 +14,13 @@ import RegPhone from '../../pages/Setting/RegPhone'
 import Feedback from '../../pages/Setting/Feedback'
 import AlterPwd from '../../pages/PersonInfo/AlterPwd'
 import NickName from '../../pages/PersonInfo/NickName'
-
+import Home from '../../pages/PHXR/Home'
 
 import WidgetForm from '../../components/WidgetForm/WidgetForm'
 export  const PageMap =
 {
   WidgetForm,
+  Home,
   "WebView"             : BaseWebView,
   'TabView'             : TabView,
 

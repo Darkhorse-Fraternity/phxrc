@@ -52,7 +52,7 @@ function _preConfig() {
 
     // Platform.OS=='ios'&& StatusBar.setBarStyle('light-content', true);
 
-    pushConfig()
+    //pushConfig()
 
 
 
