@@ -10,18 +10,19 @@
 
 export const pageConfig = {
     'TabView': {
-        title: 'RNStartKit', hideBackBtn: true, gestureResponseDistance: 0.0001,
+        title: '普惠信融', hideBackBtn: true, gestureResponseDistance: 0.0001,
     },
     'LoginView': {
         title: '登录', hideNavBar: true, gestureResponseDistance: 0.0001,
         direction: 'vertical'
     },
-
+    "Financing":{title:'我要融资'},
+    'Financed':{title:'我的融资'},
     "PersonCenter": {hideNavBar: true},
     "BaseWebView": {title: "加载中。。", gestureResponseDistance: 0.0001},
     "CourseInfoView": {title: "课程详情",},
     "LessonEvaluateView": {title: "课程评价",},
-    "PersonInfo": {title: "个人资料",},
+    "PersonInfo": {title: "设置",},
     "MyOrder": {title: "我的订单",},
     "Setting": {title: "设置",},
     "FindPwd": {title: "找回密码",},
@@ -47,6 +48,7 @@ export const pageConfig = {
     'iRate': {title: '评价'},
     'introDetail': {title: '回复'},
     'About': {title: '关于我们'},
+    'Home' : {title: "普汇信融"}
 }
 
 export function config(key: string): Object {

@@ -12,7 +12,7 @@
 		00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302C01ABCB91800DB3ED1 /* libRCTImage.a */; };
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
-		00E356F31AD99517003FC87E /* RNStartKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RNStartKitTests.m */; };
+		00E356F31AD99517003FC87E /* PHXRTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PHXRTests.m */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -34,7 +34,7 @@
 		8BB7C47240B144A5B60F0C8E /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 813FEAB873D3467994CE926B /* FontAwesome.ttf */; };
 		B083C8D2978F494C9DD36A04 /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 858A1DA5B94F48AA98B5A47F /* libRNDeviceInfo.a */; };
 		B11BDEC8C0DF4A5B9BBB840E /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6046A53161CD4BB78F8E775B /* SimpleLineIcons.ttf */; };
-		C762FD746F93AA3B36AE96CF /* libPods-RNStartKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C22219815181E16F163146 /* libPods-RNStartKit.a */; };
+		C762FD746F93AA3B36AE96CF /* libPods-PHXR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C22219815181E16F163146 /* libPods-PHXR.a */; };
 		CC0242A51DF69FAB0045A14A /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC02428F1DF69F4C0045A14A /* libRCTAnimation.a */; };
 		CC3E39A41E2622490019B85F /* libRCTQQAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC3E39801E260A200019B85F /* libRCTQQAPI.a */; };
 		CC3E39A61E2622570019B85F /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CC3E39A51E2622570019B85F /* libiconv.tbd */; };
@@ -104,7 +104,7 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = RNStartKit;
+			remoteInfo = PHXR;
 		};
 		139105C01AF99BAD00B5F7CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -311,32 +311,32 @@
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
 		00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTNetwork.xcodeproj; path = "../node_modules/react-native/Libraries/Network/RCTNetwork.xcodeproj"; sourceTree = "<group>"; };
 		00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVibration.xcodeproj; path = "../node_modules/react-native/Libraries/Vibration/RCTVibration.xcodeproj"; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* RNStartKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RNStartKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* PHXRTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PHXRTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* RNStartKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNStartKitTests.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* PHXRTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PHXRTests.m; sourceTree = "<group>"; };
 		03425A176E554E0CA0F9D1AB /* libRNImagePicker.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNImagePicker.a; sourceTree = "<group>"; };
 		0E7269983BAB4CB7AA00ED41 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		0F015BAB208C4C81AE45397E /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* RNStartKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RNStartKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = RNStartKit/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = RNStartKit/AppDelegate.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* PHXR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PHXR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = PHXR/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = PHXR/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RNStartKit/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RNStartKit/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RNStartKit/main.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PHXR/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PHXR/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = PHXR/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		16815CB8C8B24DFDB0DBFA28 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		391D9D7617FC41D286881D39 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		433AC5FDE62D4707BC6C215D /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
 		4863FC9BBD4846E195B11A28 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
-		5D8C4A73B937A1EB53019824 /* Pods-RNStartKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNStartKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-RNStartKit/Pods-RNStartKit.release.xcconfig"; sourceTree = "<group>"; };
+		5D8C4A73B937A1EB53019824 /* Pods-PHXR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PHXR.release.xcconfig"; path = "Pods/Target Support Files/Pods-PHXR/Pods-PHXR.release.xcconfig"; sourceTree = "<group>"; };
 		6046A53161CD4BB78F8E775B /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		6D8A92630460414B84B548A3 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7BF69F37BD0A4E26A00C2C8D /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
-		80C22219815181E16F163146 /* libPods-RNStartKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNStartKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		80C22219815181E16F163146 /* libPods-PHXR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PHXR.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		813FEAB873D3467994CE926B /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		858A1DA5B94F48AA98B5A47F /* libRNDeviceInfo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNDeviceInfo.a; sourceTree = "<group>"; };
@@ -344,8 +344,9 @@
 		944E0F951D6D4F85A8230C17 /* RCTQQAPI.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTQQAPI.xcodeproj; path = "../node_modules/react-native-qq/ios/RCTQQAPI.xcodeproj"; sourceTree = "<group>"; };
 		97BCDBA17C724339888AF233 /* RCTWeChat.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTWeChat.xcodeproj; path = "../node_modules/react-native-wechat/ios/RCTWeChat.xcodeproj"; sourceTree = "<group>"; };
 		B33F8BA4045C4A09A8E1CDED /* libRCTQQAPI.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTQQAPI.a; sourceTree = "<group>"; };
-		C5795D33A59FFF7734212F5B /* Pods-RNStartKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNStartKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RNStartKit/Pods-RNStartKit.debug.xcconfig"; sourceTree = "<group>"; };
+		C5795D33A59FFF7734212F5B /* Pods-PHXR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PHXR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PHXR/Pods-PHXR.debug.xcconfig"; sourceTree = "<group>"; };
 		CC0242881DF69F4C0045A14A /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
+		CC1FD98C1E48C51000ECB2CF /* PHXR.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = PHXR.entitlements; path = PHXR/PHXR.entitlements; sourceTree = "<group>"; };
 		CC3E39A51E2622570019B85F /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		CC3E39A71E2622610019B85F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		CC3E39A91E2622690019B85F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -354,7 +355,6 @@
 		CC3E39AF1E2623400019B85F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		CC3E39B11E26234D0019B85F /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		CC3E39B31E2624580019B85F /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TencentOpenAPI.framework; path = "../node_modules/react-native-qq/ios/RCTQQAPI/TencentOpenAPI.framework"; sourceTree = "<group>"; };
-		CC4548E71E03FBAC00A6CE93 /* RNStartKit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = RNStartKit.entitlements; path = RNStartKit/RNStartKit.entitlements; sourceTree = "<group>"; };
 		CC4E42221DF59D1E005783A6 /* RCTToastIOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTToastIOS.h; sourceTree = "<group>"; };
 		CC4E42231DF59D1E005783A6 /* RCTToastIOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTToastIOS.m; sourceTree = "<group>"; };
 		CC4E42251DF59D1E005783A6 /* ExportURLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportURLManager.h; sourceTree = "<group>"; };
@@ -423,7 +423,7 @@
 				1EE361316080440E93CA570B /* libRNVectorIcons.a in Frameworks */,
 				2C0FBC9E84BC49A28592C1E0 /* libRCTQQAPI.a in Frameworks */,
 				41EE95D575E14C79BCE3B581 /* libRCTWeChat.a in Frameworks */,
-				C762FD746F93AA3B36AE96CF /* libPods-RNStartKit.a in Frameworks */,
+				C762FD746F93AA3B36AE96CF /* libPods-PHXR.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,13 +472,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		00E356EF1AD99517003FC87E /* RNStartKitTests */ = {
+		00E356EF1AD99517003FC87E /* PHXRTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* RNStartKitTests.m */,
+				00E356F21AD99517003FC87E /* PHXRTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = RNStartKitTests;
+			path = PHXRTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -500,7 +500,7 @@
 				CC3E39A91E2622690019B85F /* libz.tbd */,
 				CC3E39A71E2622610019B85F /* libsqlite3.tbd */,
 				CC3E39A51E2622570019B85F /* libiconv.tbd */,
-				80C22219815181E16F163146 /* libPods-RNStartKit.a */,
+				80C22219815181E16F163146 /* libPods-PHXR.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -523,10 +523,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* RNStartKit */ = {
+		13B07FAE1A68108700A75B9A /* PHXR */ = {
 			isa = PBXGroup;
 			children = (
-				CC4548E71E03FBAC00A6CE93 /* RNStartKit.entitlements */,
+				CC1FD98C1E48C51000ECB2CF /* PHXR.entitlements */,
 				CCC010561DF9485700613165 /* InfoPlist.strings */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -538,7 +538,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = RNStartKit;
+			name = PHXR;
 			sourceTree = "<group>";
 		};
 		146834001AC3E56700842450 /* Products */ = {
@@ -559,8 +559,8 @@
 		14D76F37BE6FB929EF410EB7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C5795D33A59FFF7734212F5B /* Pods-RNStartKit.debug.xcconfig */,
-				5D8C4A73B937A1EB53019824 /* Pods-RNStartKit.release.xcconfig */,
+				C5795D33A59FFF7734212F5B /* Pods-PHXR.debug.xcconfig */,
+				5D8C4A73B937A1EB53019824 /* Pods-PHXR.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -627,9 +627,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* RNStartKit */,
+				13B07FAE1A68108700A75B9A /* PHXR */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* RNStartKitTests */,
+				00E356EF1AD99517003FC87E /* PHXRTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				14D76F37BE6FB929EF410EB7 /* Pods */,
 				115E0148E2FB61C13FFE9539 /* Frameworks */,
@@ -642,8 +642,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* RNStartKit.app */,
-				00E356EE1AD99517003FC87E /* RNStartKitTests.xctest */,
+				13B07F961A680F5B00A75B9A /* PHXR.app */,
+				00E356EE1AD99517003FC87E /* PHXRTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -783,9 +783,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* RNStartKitTests */ = {
+		00E356ED1AD99517003FC87E /* PHXRTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "RNStartKitTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "PHXRTests" */;
 			buildPhases = (
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
@@ -796,14 +796,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = RNStartKitTests;
-			productName = RNStartKitTests;
-			productReference = 00E356EE1AD99517003FC87E /* RNStartKitTests.xctest */;
+			name = PHXRTests;
+			productName = PHXRTests;
+			productReference = 00E356EE1AD99517003FC87E /* PHXRTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* RNStartKit */ = {
+		13B07F861A680F5B00A75B9A /* PHXR */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "RNStartKit" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "PHXR" */;
 			buildPhases = (
 				DDDFBF08CEEAADA92350BC0A /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
@@ -817,9 +817,9 @@
 			);
 			dependencies = (
 			);
-			name = RNStartKit;
+			name = PHXR;
 			productName = "Hello World";
-			productReference = 13B07F961A680F5B00A75B9A /* RNStartKit.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* PHXR.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -833,22 +833,23 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = M7CPF4WCQ6;
+						DevelopmentTeam = G54H3R6236;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = G54H3R6236;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "RNStartKit" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "PHXR" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -935,8 +936,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* RNStartKit */,
-				00E356ED1AD99517003FC87E /* RNStartKitTests */,
+				13B07F861A680F5B00A75B9A /* PHXR */,
+				00E356ED1AD99517003FC87E /* PHXRTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1231,7 +1232,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RNStartKit/Pods-RNStartKit-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PHXR/Pods-PHXR-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D930B211DA61A6E9DDD1CF98 /* [CP] Embed Pods Frameworks */ = {
@@ -1246,7 +1247,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RNStartKit/Pods-RNStartKit-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PHXR/Pods-PHXR-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DDDFBF08CEEAADA92350BC0A /* [CP] Check Pods Manifest.lock */ = {
@@ -1271,7 +1272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* RNStartKitTests.m in Sources */,
+				00E356F31AD99517003FC87E /* PHXRTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1299,7 +1300,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* RNStartKit */;
+			target = 13B07F861A680F5B00A75B9A /* PHXR */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1311,7 +1312,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = RNStartKit;
+			path = PHXR;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1321,12 +1322,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = M7CPF4WCQ6;
+				DEVELOPMENT_TEAM = G54H3R6236;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = RNStartKitTests/Info.plist;
+				INFOPLIST_FILE = PHXRTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1340,7 +1341,7 @@
 				OTHER_LDFLAGS = "-lc++";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RNStartKit.app/RNStartKit";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PHXR.app/PHXR";
 			};
 			name = Debug;
 		};
@@ -1349,8 +1350,8 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = M7CPF4WCQ6;
-				INFOPLIST_FILE = RNStartKitTests/Info.plist;
+				DEVELOPMENT_TEAM = G54H3R6236;
+				INFOPLIST_FILE = PHXRTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1364,19 +1365,18 @@
 				OTHER_LDFLAGS = "-lc++";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RNStartKit.app/RNStartKit";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PHXR.app/PHXR";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C5795D33A59FFF7734212F5B /* Pods-RNStartKit.debug.xcconfig */;
+			baseConfigurationReference = C5795D33A59FFF7734212F5B /* Pods-PHXR.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = RNStartKit/RNStartKit.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = G54H3R6236;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Reveal-iOS-SDK/Reveal-Framework-iOS-1.6.2\"",
@@ -1393,7 +1393,7 @@
 					"$(SRCROOT)/../node_modules/react-native-qq/ios/RCTQQAPI/**",
 					"$(SRCROOT)/../node_modules/react-native-wechat/ios",
 				);
-				INFOPLIST_FILE = RNStartKit/Info.plist;
+				INFOPLIST_FILE = PHXR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CFLAGS = (
 					"$(inherited)",
@@ -1415,20 +1415,19 @@
 					"-framework",
 					"\"TencentOpenAPI\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rn.startkit;
-				PRODUCT_NAME = RNStartKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rn.PHXR;
+				PRODUCT_NAME = PHXR;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D8C4A73B937A1EB53019824 /* Pods-RNStartKit.release.xcconfig */;
+			baseConfigurationReference = 5D8C4A73B937A1EB53019824 /* Pods-PHXR.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = RNStartKit/RNStartKit.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = G54H3R6236;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-qq/ios/RCTQQAPI/**";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1441,7 +1440,7 @@
 					"$(SRCROOT)/../node_modules/react-native-qq/ios/RCTQQAPI/**",
 					"$(SRCROOT)/../node_modules/react-native-wechat/ios",
 				);
-				INFOPLIST_FILE = RNStartKit/Info.plist;
+				INFOPLIST_FILE = PHXR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CFLAGS = (
 					"$(inherited)",
@@ -1463,8 +1462,8 @@
 					"-framework",
 					"\"TencentOpenAPI\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rn.startkit;
-				PRODUCT_NAME = RNStartKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rn.PHXR;
+				PRODUCT_NAME = PHXR;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -1575,7 +1574,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "RNStartKitTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "PHXRTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -1584,7 +1583,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "RNStartKit" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "PHXR" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -1593,7 +1592,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "RNStartKit" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "PHXR" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
