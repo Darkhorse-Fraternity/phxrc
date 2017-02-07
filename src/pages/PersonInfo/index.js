@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
             <View style={styles.groupSpace}/>
           {this._renderRow('我的账户',this.props.userData.username, () => {
               // NavigationManager.goToPage("NickName");
-              //this.props.push("NickName");
+              this.props.push("Account");
           })}
 
 
@@ -268,7 +268,7 @@ const styles = StyleSheet.create({
             <View style={styles.group}>
                 {this._renderRow('个人信息',"" ,() => {
                     // NavigationManager.goToPage("AlterPwd");
-                    this.props.push("AlterPwd");
+                    this.props.push("UserInfo");
                 })}
             </View>
 
@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
             <View style={styles.group}>
                 {this._renderRow('信用信息',"" ,() => {
                     // NavigationManager.goToPage("AlterPwd");
-                    this.props.push("AlterPwd");
+                    this.props.push("CreditInfo");
                 })}
             </View>
 
@@ -286,7 +286,7 @@ const styles = StyleSheet.create({
             <View style={styles.group}>
                 {this._renderRow('我的资产',"" ,() => {
                     // NavigationManager.goToPage("AlterPwd");
-                    this.props.push("AlterPwd");
+                    this.props.push("AssetsList");
                 })}
             </View>
         </AniScrollView>

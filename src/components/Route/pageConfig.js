@@ -48,7 +48,13 @@ export const pageConfig = {
     'iRate': {title: '评价'},
     'introDetail': {title: '回复'},
     'About': {title: '关于我们'},
-    'Home' : {title: "普汇信融"}
+    'Home' : {title: "普汇信融"},
+    "Account" : {title:'账户信息'},
+    "UserInfo" : {title:'个人信息'},
+    "CreditInfo" : {title:'信用信息'},
+    "AssetsInfo" : {title:"资产信息"},
+    "AssetsList" : {title:"资产列表"},
+    "FinanceDetail" : {title:"融资详情"},
 }
 
 export function config(key: string): Object {

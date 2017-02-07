@@ -12,6 +12,7 @@ import {
     StyleSheet,
     TouchableHighlight,
     Text,
+    ScrollView
 } from 'react-native'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
@@ -54,25 +55,50 @@ export  default  class Account extends Component {
                         </View>
                     </View>
                 </TouchableHighlight>
+                <View style={styles.separator}/>
             </View>
         );
     }
 
     render(): ReactElement<any> {
         return (
-            <View style={[this.props.style,styles.wrap]}>
+            <ScrollView style={[this.props.style,styles.wrap]}>
                 {/*{this._renderRow('账号',this.props.userData.mobilePhoneNumber ,() => {
 
                  })}*/}
-                {this._renderRow('账户', this.props.userData.username, () => {
+                {this._renderRow('姓名', "李xx", () => {
                 })}
-                <View style={styles.separator}/>
-                {this._renderRow('类型', "融资会员", () => {
+
+                {this._renderRow('性别', "男", () => {
                 })}
-                <View style={styles.separator}/>
-                {this._renderRow('状态', "已激活", () => {
+                {this._renderRow('年龄', "25", () => {
                 })}
-            </View>
+                {this._renderRow('年龄', "25", () => {})}
+                {this._renderRow('身份证', "25", () => {})}
+                {this._renderRow('联系方式', "25", () => {})}
+                {this._renderRow('邮箱', "25", () => {})}
+                {this._renderRow('城市', "25", () => {})}
+                {this._renderRow('婚姻状态', "25", () => {})}
+                {this._renderRow('配偶姓名', "25", () => {})}
+                {this._renderRow('配偶身份证', "25", () => {})}
+                {this._renderRow('配偶电话', "25", () => {})}
+                {this._renderRow('居住地址', "25", () => {})}
+                {this._renderRow('邮编', "25", () => {})}
+                {this._renderRow('户籍地址', "25", () => {})}
+                {this._renderRow('工作单位', "25", () => {})}
+                {this._renderRow('单位地址', "25", () => {})}
+                {this._renderRow('单位性质', "25", () => {})}
+                {this._renderRow('单位规模', "25", () => {})}
+                {this._renderRow('单位人员规模', "25", () => {})}
+                {this._renderRow('在岗职位', "25", () => {})}
+                {this._renderRow('职位水平', "25", () => {})}
+                {this._renderRow('入职时间', "25", () => {})}
+                {this._renderRow('月工资水平', "25", () => {})}
+                {this._renderRow('提供工作证明文件', "25", () => {})}
+                {this._renderRow('非配偶直系亲属姓名1', "25", () => {})}
+
+
+            </ScrollView>
         );
     }
 }
@@ -108,7 +134,6 @@ const styles = StyleSheet.create({
     },
     separator: {
         backgroundColor: '#bbbbbb',
-        // marginLeft: 15,
         height: StyleSheet.hairlineWidth,
     },
 })

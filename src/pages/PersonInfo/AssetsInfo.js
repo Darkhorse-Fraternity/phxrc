@@ -12,6 +12,7 @@ import {
     StyleSheet,
     TouchableHighlight,
     Text,
+    ScrollView
 } from 'react-native'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
@@ -54,25 +55,26 @@ export  default  class Account extends Component {
                         </View>
                     </View>
                 </TouchableHighlight>
+                <View style={styles.separator}/>
             </View>
         );
     }
 
     render(): ReactElement<any> {
         return (
-            <View style={[this.props.style,styles.wrap]}>
+            <ScrollView style={[this.props.style,styles.wrap]}>
                 {/*{this._renderRow('账号',this.props.userData.mobilePhoneNumber ,() => {
 
                  })}*/}
-                {this._renderRow('账户', this.props.userData.username, () => {
+                {this._renderRow('房产地址', "x省", () => {
                 })}
-                <View style={styles.separator}/>
-                {this._renderRow('类型', "融资会员", () => {
+
+                {this._renderRow('所在小区', "xxx", () => {
                 })}
-                <View style={styles.separator}/>
-                {this._renderRow('状态', "已激活", () => {
-                })}
-            </View>
+
+
+
+            </ScrollView>
         );
     }
 }
@@ -108,7 +110,6 @@ const styles = StyleSheet.create({
     },
     separator: {
         backgroundColor: '#bbbbbb',
-        // marginLeft: 15,
         height: StyleSheet.hairlineWidth,
     },
 })

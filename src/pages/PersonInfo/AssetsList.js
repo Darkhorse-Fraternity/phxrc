@@ -19,6 +19,7 @@ import * as immutable from 'immutable';
 import BaseListView from '../../components/Base/BaseListView';
 import {listLoad, listLoadMore} from '../../redux/actions/list'
 import {push} from '../../redux/nav'
+
 const listKey = 'listKey'
 function myListLoad(more: bool = false) {
     return (dispatch, getState) => {
@@ -62,20 +63,11 @@ export default class List extends Component {
             <TouchableOpacity
                 style={{marginTop:10}}
                 onPress={()=>{
-                    push('FinanceDetail')
+                    push('AssetsInfo')
             }}>
                 <View style={styles.row}>
-                    <View>
-                        <Text>融资会员的融资请求</Text>
-                        <Text style={{marginTop:10,color:'rgb(150,150,150)'}}>13588834854</Text>
-                    </View>
-                    <View style={{flexDirection:'row',alignItems:'center'}}>
-                        <View style={{marginRight:10}}>
-                            <Text style={{textAlign:'right'}}>未通过</Text>
-                            <Text style={{marginTop:10,color:'rgb(150,150,150)'}}>2012.2.2</Text>
-                        </View>
-                        <View style={styles.arrowView}/>
-                    </View>
+                        <Text>福州鼓楼区xx小区x号楼</Text>
+                    <View style={styles.arrowView}/>
                 </View>
             </TouchableOpacity>
         )
@@ -132,8 +124,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         paddingHorizontal: 18,
         paddingVertical: 18,
-        flexDirection: 'row',
-        justifyContent: 'space-between'
+        flexDirection:'row',
+        justifyContent:'space-between'
     },
     arrowView: {
         borderBottomWidth: StyleSheet.hairlineWidth * 2,
@@ -143,6 +135,7 @@ const styles = StyleSheet.create({
         width: 10,
         height: 10,
     },
+
 })
 
 

@@ -12,6 +12,7 @@ import {
     StyleSheet,
     TouchableHighlight,
     Text,
+    ScrollView
 } from 'react-native'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
@@ -49,30 +50,34 @@ export  default  class Account extends Component {
                         </Text>
                         <View style={styles.row2}>
                             <Text style={styles.rowDesText}>
-                                {des}
+                               - {des}
                             </Text>
                         </View>
                     </View>
                 </TouchableHighlight>
+                <View style={styles.separator}/>
             </View>
         );
     }
 
     render(): ReactElement<any> {
         return (
-            <View style={[this.props.style,styles.wrap]}>
+            <ScrollView style={[this.props.style,styles.wrap]}>
                 {/*{this._renderRow('账号',this.props.userData.mobilePhoneNumber ,() => {
 
                  })}*/}
-                {this._renderRow('账户', this.props.userData.username, () => {
+                {this._renderRow('近一年是否有贷款及信用卡还款累计逾期次数', "2", () => {
+                                })}
+
+                {this._renderRow('近两年是否有贷款及信用卡还款累计逾期次数', "0", () => {
+                                })}
+                {this._renderRow('近三年是否有贷款及信用卡还款累计逾期次数', "0", () => {
                 })}
-                <View style={styles.separator}/>
-                {this._renderRow('类型', "融资会员", () => {
-                })}
-                <View style={styles.separator}/>
-                {this._renderRow('状态', "已激活", () => {
-                })}
-            </View>
+                {this._renderRow('5年内是否存在资产处置、担保代偿要求', "5", () => {})}
+
+
+
+            </ScrollView>
         );
     }
 }
@@ -85,15 +90,14 @@ const styles = StyleSheet.create({
         height: 15 / 2,
     },
     row: {
-        alignItems: 'center',
+        padding:15,
         backgroundColor: 'white',
         paddingLeft: 29 / 2,
         paddingRight: 23 / 2,
-        height: 40,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+
     },
     row2: {
+        marginTop:10,
         flexDirection: 'row',
         alignItems: 'center',
     },
@@ -103,12 +107,11 @@ const styles = StyleSheet.create({
         color: blackFontColor,
     },
     rowDesText:{
-        fontSize:13,
+        fontSize:17,
         color:'rgb(150,150,150)'
     },
     separator: {
         backgroundColor: '#bbbbbb',
-        // marginLeft: 15,
         height: StyleSheet.hairlineWidth,
     },
 })
