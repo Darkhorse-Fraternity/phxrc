@@ -18,8 +18,10 @@ import {
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
 import {placeholder} from '../../../source/'
-import {push} from '../../redux/nav'
+import {push,refresh} from '../../redux/nav'
+import {renderNavImageButton} from '../../util/viewUtil'
 //static displayName = Home
+import {icon_class} from '../../../source'
 @connect(
     state =>({
         //state:state.util.get()
@@ -35,6 +37,12 @@ export  default  class Home extends Component {
 
     static propTypes = {};
     static defaultProps = {};
+
+    componentDidMount() {
+        const renderLeftComponent = renderNavImageButton(icon_class, 'left',
+            ()=>push('PersonInfo'))
+        refresh({renderLeftComponent})
+    }
 
     __gofinancing = ()=> {
 

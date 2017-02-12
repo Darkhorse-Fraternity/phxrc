@@ -48,7 +48,7 @@ export const pageConfig = {
     'iRate': {title: '评价'},
     'introDetail': {title: '回复'},
     'About': {title: '关于我们'},
-    'Home' : {title: "普汇信融"},
+    'Home' : {title: "普汇信融",direction: 'vertical'},
     "Account" : {title:'账户信息'},
     "UserInfo" : {title:'个人信息'},
     "CreditInfo" : {title:'信用信息'},
