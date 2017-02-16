@@ -1415,8 +1415,9 @@
 					"-framework",
 					"\"TencentOpenAPI\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rn.PHXR;
+				PRODUCT_BUNDLE_IDENTIFIER = com.reactnative.phxr;
 				PRODUCT_NAME = PHXR;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1462,8 +1463,9 @@
 					"-framework",
 					"\"TencentOpenAPI\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rn.PHXR;
+				PRODUCT_BUNDLE_IDENTIFIER = com.reactnative.phxr;
 				PRODUCT_NAME = PHXR;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
