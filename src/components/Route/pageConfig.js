@@ -10,7 +10,7 @@
 
 export const pageConfig = {
     'TabView': {
-        title: '普惠信融', hideBackBtn: true, gestureResponseDistance: 0.0001,
+        title: '普惠信融', hideBackBtn: true, gestureResponseDistance: 0.0001,direction: 'vertical'
     },
     'LoginView': {
         title: '登录', hideNavBar: true, gestureResponseDistance: 0.0001,

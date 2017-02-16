@@ -210,17 +210,17 @@ class RegPhone extends Component {
                 )}
 
                 {this._renderRowMain('手机号:', '请填入手机号码',
-                    (text) => this.setState({phone: text}), 'numeric', true, 11, "1"
+                    (text) => this.setState({phone: text}), 'numeric', false, 11, "1"
                 )}
 
                 {this._renderRow('请选择所在城市:', '福州',(title) => {
                     this.showActionSheet(title,["福州","厦门"])
                 })}
                 {this._renderRowMain('密码:', '请输入密码',
-                    (text) => this.setState({phone: text}), 'default', true, 11, "1"
+                    (text) => this.setState({phone: text}), 'default', false, 11, "1"
                 )}
                 {this._renderRowMain('确认密码:', '请再次确认密码',
-                    (text) => this.setState({phone: text}), 'default', true, 11, "1"
+                    (text) => this.setState({phone: text}), 'default', false, 11, "1"
                 )}
 
                 {/*<View style={{flexDirection:'row'}}>*/}
