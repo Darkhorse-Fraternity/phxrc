@@ -22,6 +22,7 @@ import {push,refresh} from '../../redux/nav'
 import {renderNavImageButton} from '../../util/viewUtil'
 //static displayName = Home
 import {icon_class} from '../../../source'
+import {logo} from '../../../source'
 @connect(
     state =>({
         //state:state.util.get()
@@ -67,16 +68,16 @@ export  default  class Home extends Component {
         return (
             <ScrollView style={[this.props.style, {backgroundColor:"white"}]}>
                 <View style={[this.props.style, styles.wrap]}>
-                    <Image source={placeholder} style={styles.logo}/>
+                    <Image source={logo} style={styles.logo}/>
                     <Text style={styles.label}>不动产抵押融资服务</Text>
                     <Text style={styles.label}>机动车抵押融资服务</Text>
                     <Text style={styles.label}>信用消费类融资服务</Text>
                     <TouchableOpacity style={styles.btn} onPress={this.__gofinancing}>
                         <Text style={styles.btnText}>我要融资</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.btn} onPress={this.__myfinanced}>
-                        <Text style={styles.btnText}>我的融资</Text>
-                    </TouchableOpacity>
+                    {/*<TouchableOpacity style={styles.btn} onPress={this.__myfinanced}>*/}
+                        {/*<Text style={styles.btnText}>我的融资</Text>*/}
+                    {/*</TouchableOpacity>*/}
                     <Text style={styles.tip}>点击"我要融资"，您专属的融资咨询顾问会为您提供进行全方位的融资咨询服务</Text>
                 </View>
             </ScrollView>
