@@ -19,14 +19,27 @@ import {connect} from 'react-redux'
 import TipProgress from '../../components/TipProgress'
 import {bindActionCreators} from 'redux';
 
+import {phxr_query_financing_detail} from '../../request/qzapi'
+import {request} from '../../redux/actions/req'
+
 //static displayName = Account
 @connect(
     state =>({
         //state:state.util.get()
-        userData: state.login.data,
+        data:state.req.get('phxr_query_financing_detail')
     }),
-    dispatch =>({
+    (dispatch,props) =>({
         //...bindActionCreators({},dispatch),
+        load:()=>{
+            dispatch(async (dispatch,getState)=>{
+
+                // const uid = getState().login.data.userId
+                const params = phxr_query_financing_detail(props.scene.route.businessId)
+                await dispatch(request('phxr_query_financing_detail',params))
+
+            })
+
+        }
     })
 )
 export  default  class Account extends Component {
@@ -38,9 +51,18 @@ export  default  class Account extends Component {
         return !immutable.is(this.props.data, nextProps.data)
     }
 
-    static propTypes = {};
-    static defaultProps = {};
+    static propTypes = {
+        load: PropTypes.func.isRequired,
+    };
+    static defaultProps = {
+        data:immutable.fromJS({
+        })
+    };
 
+
+    componentDidMount() {
+        this.props.load()
+    }
 
     _renderRow(title: string, des: string, onPress: Function) {
         return (
@@ -65,12 +87,12 @@ export  default  class Account extends Component {
 
 
 
-    __renderTipProgress(titleArray,index,lineStatu): ReactElement<any> {
+    __renderTipProgress(titleArray,index,lineStatu,direction): ReactElement<any> {
         const rightPosition = (Dimensions.get('window').width ) -52.5
         const leftPosition = 52.5;
         return (
             <View style={styles.tipProgressView}>
-                <TipProgress index={index} style={styles.propgress}/>
+                <TipProgress index={index} style={styles.propgress} direction={direction}/>
                 <View style={styles.subProgressTip}>
                     {(titleArray.map((title)=>{
                         return ( <Text key={title} style={styles.progressTipText}>{title}</Text>)
@@ -103,41 +125,72 @@ export  default  class Account extends Component {
         );
     }
 
+
+    map(item):string {
+        let res = "无报告";
+
+        if(item == "1") res = "待处理"
+        if(item == "2") res = "同意"
+        if(item == "3") res = "拒绝"
+
+        return res;
+
+    }
+
+
+
     render(): ReactElement<any> {
+        let data =  this.props.data.toJS().data || [{}]
+        data = data[0]
+        console.log('test:', data);
+        let securedAssets = "信用"
+        if(data.securedAssets == "1"){securedAssets = "房产"}
+        if(data.securedAssets == "2"){securedAssets = "汽车"}
+
+        let borrowingPriority = "额度"
+        if(data.borrowingPriority == "1"){borrowingPriority = "利率"}
+        if(data.borrowingPriority == "2"){borrowingPriority = "时效"}
+
+        let financingPriority = data.financingPriority || "0"
+        financingPriority = financingPriority.indexOf('1') != -1 ? 12 - financingPriority.indexOf('1') : 0
+
+
+
         return (
             <ScrollView style={[this.props.style,styles.wrap]}>
                 {/*{this._renderRow('账号',this.props.userData.mobilePhoneNumber ,() => {
 
                  })}*/}
-                {this._renderRow('标题', "收到来自xxx的融资请求", () => {
+                {this._renderRow('标题', data.title, () => {
                 })}
 
-                {this._renderRow('借款额度', "200万", () => {
+                {this._renderRow('借款额度', data.financingLimit||0 + "万元", () => {
                 })}
-                {this._renderRow('到款时间', "12.1.2", () => {
+                {this._renderRow('到款时间', data.moneyTime||"等待", () => {
                 })}
-                {this._renderRow('担保资产', "信用", () => {
+                {this._renderRow('担保资产', securedAssets, () => {
                 })}
-                {this._renderRow('借款优先', "额度", () => {
+                {this._renderRow('借款优先', borrowingPriority, () => {
                 })}
                 <View>
-                    {this.__renderTipProgress(['需求确认','信息录入','材料收集','材料审核'],4,'hidden')}
-                    {this.__renderTipProgress(['需求确认1','信息录入1','材料收集1','材料审核1'],4,'right')}
-                    {this.__renderTipProgress(['需求确认2','信息录入2','材料收集2','材料审核2'],1,'left')}
+                    {this.__renderTipProgress(['需求确认','信息录入','材料收集','材料审核'],financingPriority,
+                        'hidden')}
+                    {this.__renderTipProgress(['需求确认1','信息录入1','材料收集1','材料审核1']
+                        ,financingPriority -3,'right',"right")}
+                    {this.__renderTipProgress(['需求确认2','信息录入2','材料收集2','材料审核2'],
+                        financingPriority-8,'left')}
                     <View style={[styles.line]}/>
                 </View>
 
-                {this._renderRow('融资规划预案', "待处理", () => {
+                {this._renderRow('融资规划预案', this.map(data.prePlanState), () => {
                 })}
-                {this._renderRow('融资规划方案', "待处理", () => {
+                {this._renderRow('签约计划', this.map(data.signPlanState), () => {
                 })}
-                {this._renderRow('签约计划', "待处理", () => {
+                {this._renderRow('还款计划表',  this.map(data.repaymentTableState), () => {
                 })}
-                {this._renderRow('还款计划表', "待处理", () => {
+                {this._renderRow('费用计算表', this.map(data.costTableState), () => {
                 })}
-                {this._renderRow('费用计算表', "待处理", () => {
-                })}
-                {this._renderRow('结案报告', "待处理", () => {
+                {this._renderRow('结案报告',  this.map(data.closedReportState), () => {
                 })}
 
             </ScrollView>

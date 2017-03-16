@@ -23,12 +23,18 @@ import {renderNavImageButton} from '../../util/viewUtil'
 //static displayName = Home
 import {icon_class} from '../../../source'
 import {logo} from '../../../source'
+import {phxr_query_config} from '../../request/qzapi'
+import {request} from '../../redux/actions/req'
 @connect(
     state =>({
         //state:state.util.get()
     }),
     dispatch =>({
         //...bindActionCreators({},dispatch),
+        load:()=>{
+            const param = phxr_query_config()
+            dispatch(request('phxr_query_config',param))
+        }
     })
 )
 export  default  class Home extends Component {
@@ -43,6 +49,7 @@ export  default  class Home extends Component {
         // const renderLeftComponent = renderNavImageButton(icon_class, 'left',
         //     ()=>push('PersonInfo'))
         // refresh({renderLeftComponent})
+        this.props.load()
     }
 
     __gofinancing = ()=> {

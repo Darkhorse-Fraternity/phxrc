@@ -8,7 +8,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "antd-mobile": "^0.9.13",
+    "antd-mobile": "^1.0.5",
     "normalizr-immutable": "^0.0.3",
     "react": "~15.4.2",
     "react-native": "0.41.0",

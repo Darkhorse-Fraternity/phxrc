@@ -7,14 +7,17 @@
 import {backViewColor, blackFontColor, grayFontColor} from '../../configure';
 import * as immutable from 'immutable';
 import React, {Component, PropTypes} from 'react';
+import {phxr_act_account} from '../../request/qzapi'
 import {
     View,
     StyleSheet,
     TouchableHighlight,
     Text,
+    TouchableOpacity,
 } from 'react-native'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
+import {pop} from '../../redux/nav'
 
 //static displayName = Account
 @connect(
@@ -24,6 +27,22 @@ import {bindActionCreators} from 'redux';
     }),
     dispatch =>({
         //...bindActionCreators({},dispatch),
+        activety: ()=> {
+
+            return dispatch(async(dispatch, getState)=> {
+
+                const uid = getState().login.data.userId
+                const params = phxr_account_active(uid, "1")
+                const res = await send(params)
+                if (res.rspCode == "0000") {
+                    Toast.show('激活成功!')
+                    // pop()
+                    dispatch(updateUserData({status:1}))
+                } else {
+                    Toast.show(res.rspMsg)
+                }
+            })
+        },
     })
 )
 export  default  class Account extends Component {
@@ -58,20 +77,34 @@ export  default  class Account extends Component {
         );
     }
 
+    __activate = ()=> {
+        if (this.props.userData.status) {
+            pop()
+        } else {
+            this.props.activety()
+        }
+
+    }
+
     render(): ReactElement<any> {
         return (
             <View style={[this.props.style,styles.wrap]}>
                 {/*{this._renderRow('账号',this.props.userData.mobilePhoneNumber ,() => {
 
                  })}*/}
-                {this._renderRow('账户', this.props.userData.username, () => {
+                {this._renderRow('账户', this.props.userData.userAccount, () => {
                 })}
                 <View style={styles.separator}/>
                 {this._renderRow('类型', "融资会员", () => {
                 })}
                 <View style={styles.separator}/>
-                {this._renderRow('状态', "已激活", () => {
+                {this._renderRow('状态', this.props.userData.status == 1 ? "已激活" : "未激活", () => {
                 })}
+
+                <TouchableOpacity style={styles.btn} onPress={this.__activate}>
+                    <Text style={styles.btnText}>{this.props.userData.status==1 ? "返回" : "激活"}</Text>
+                </TouchableOpacity>
+
             </View>
         );
     }
@@ -110,5 +143,22 @@ const styles = StyleSheet.create({
         backgroundColor: '#bbbbbb',
         // marginLeft: 15,
         height: StyleSheet.hairlineWidth,
+    },
+    btn: {
+        marginTop: 30,
+        borderColor: 'blue',
+        borderWidth: StyleSheet.hairlineWidth,
+        padding: 10,
+        borderRadius: 10,
+        width:100,
+        height:40,
+        alignSelf:'center',
+        alignItems:'center',
+        justifyContent:'center',
+    },
+    btnText: {
+        color: 'blue',
+        fontSize: 15,
+        fontWeight: "400",
     },
 })

@@ -4,17 +4,31 @@
  */
 'use strict';
 import {send} from '../../request'
+import {Toast} from '../../util'
 export const REQUEST_LOAD = 'REQUEST_LOAD'
 export const REQUEST_SUCCEEED = 'REQUEST_SUCCEEED'
 export const REQUEST_FAILED = 'REQUEST_FAILED'
 
-export function request(key: string, params: Object): Function {
+export function request(key: string, params: Object,callBack:Function): Function {
 
     return (dispatch) => {
         dispatch(requestStart(key));//当page 不为0 的时候则表示不是加载多页。
         send(params).then(response => {
-            dispatch(requestSucceed(key, response))
+            callBack && callBack(response)
+            if(response.rspCode == '0000'){
+                // console.log('test:', response);
+                // if(!response.result && response.assetsInfo){
+                //     response.result = response.assetsInfo
+                // }
+                dispatch(requestSucceed(key, response.result))
+            }else{
+                console.log('req error:', response.rspMsg);
+                Toast.show(response.rspMsg)
+                dispatch(requestFailed(key, response.rspMsg))
+            }
+
         }).catch(e => {
+            console.log('req error:', e.message);
             dispatch(requestFailed(key, e.message))
         })
     }

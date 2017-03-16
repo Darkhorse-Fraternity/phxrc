@@ -11,7 +11,7 @@ import  {
     Picker,
     LayoutAnimation,
     TouchableOpacity,
-    NativeModules,
+    Switch
 } from 'react-native'
 import {OS} from '../../util/';
 
@@ -25,8 +25,8 @@ import {navigateReplaceIndex, navigatePush} from '../../redux/actions/nav'
 import {register} from '../../redux/actions/login'
 import {checkPhoneNum, Toast} from '../../util'
 
-const webUrl = 'https://static.dayi.im/static/fudaojun/rule.html?version=20160603182000';
-import { ActionSheet } from 'antd-mobile';
+const webUrl = 'http://103.236.253.138:8088/declare.html';
+import {ActionSheet} from 'antd-mobile';
 class RegPhone extends Component {
     constructor(props: Object) {
         super(props);
@@ -37,6 +37,12 @@ class RegPhone extends Component {
             ymCode: "", //验证码
             isTap: false,
             timeLoad: false,
+            userName: '',
+            password: '',
+            passwordAgain:"",
+            clicked:'福州',
+            advisersCode:"",
+            showAdvisersCode:false,
         };
     }
 
@@ -47,6 +53,7 @@ class RegPhone extends Component {
         ymCode:string,
         isTap:bool, // 用于time 是否在走。
         timeLoad:bool,
+        userName:string
     };
 
 
@@ -96,23 +103,54 @@ class RegPhone extends Component {
     };
 
     _goRegist() {
-        // 判断手机号的正则
-        if (!checkPhoneNum(this.state.phone)) {
-            Toast.show('不是正确的手机号码');
+
+        //判断用户名
+        if(this.state.userName.length == 0){
+            Toast.show('用户名不能为空');
             this.refs['1'].focus();
             return;
         }
-        //判断验证码的正则
-        const reg = /^\d{6}$/;
-        const flag = reg.test(this.state.ymCode)
-        if (!flag) {
-            Toast.show('不是正确验证码');
-            this.refs['2'].focus();
+
+
+
+        var r = /^\+?[1-9][0-9]*$/;
+        if(r.test(this.state.userName)){
+            Toast.show('用户名必须含有字母');
+            this.refs['1'].focus();
             return;
         }
 
-        this.props.mRegister(this.state);
+        // 判断手机号的正则
+        if (!checkPhoneNum(this.state.phone)) {
+            Toast.show('不是正确的手机号码');
+            this.refs['2'].focus();
+            return;
+        }
+        //判断验证码的正则
+        // const reg = /^\d{6}$/;
+        // const flag = reg.test(this.state.ymCode)
+        // if (!flag) {
+        //     Toast.show('不是正确验证码');
+        //     this.refs['2'].focus();
+        //     return;
+        // }
 
+
+        if(this.state.password.length < 6){
+            Toast.show('密码需要大于6位数');
+            this.refs['3'].focus();
+            return;
+        }
+
+        if(this.state.password != this.state.passwordAgain){
+            Toast.show('密码确定与密码不一致！');
+            this.refs['4'].focus();
+            return;
+        }
+
+
+        this.props.mRegister(this.state);
+        //
     }
 
 
@@ -122,7 +160,7 @@ class RegPhone extends Component {
     }
 
 
-    showActionSheet(message:string,op:any) {
+    showActionSheet(message: string, op: any) {
         const wrapProps = {onTouchStart: e => e.preventDefault()}
         const BUTTONS = op.concat('取消')
         ActionSheet.showActionSheetWithOptions({
@@ -135,7 +173,7 @@ class RegPhone extends Component {
                 wrapProps,
             },
             (buttonIndex) => {
-                this.setState({ clicked: BUTTONS[buttonIndex] });
+                this.setState({clicked: BUTTONS[buttonIndex]});
             });
     }
 
@@ -151,7 +189,7 @@ class RegPhone extends Component {
 
     _renderRowMain(title: string, placeholder: string, onChangeText: Function,
                    boardType: PropTypes.oneOf = 'default', autoFocus: bool = false, maxLength: number = 16,
-                   ref: string) {
+                   ref: string,secureTextEntry:bool=false) {
 
         return (
             <View style={styles.rowMainStyle}>
@@ -169,13 +207,14 @@ class RegPhone extends Component {
                     placeholder={placeholder}
                     clearButtonMode='while-editing'
                     enablesReturnKeyAutomatically={true}
-                    onSubmitEditing={() =>this.focusNextField(ref)}
+                    //onSubmitEditing={() =>this.focusNextField(ref)}
+                    secureTextEntry={secureTextEntry}
                     onChangeText={onChangeText}/>
             </View>
         )
     }
 
-    _renderRow(title: string,  dex:string,onPress: Function) {
+    _renderRow(title: string, dex: string, onPress: Function) {
         return (
             <View>
                 <TouchableOpacity onPress={()=>onPress(title)}>
@@ -184,7 +223,7 @@ class RegPhone extends Component {
                             {title}
                         </Text>
                         <View style={styles.row2}>
-                            <Text style={styles.dex} >{dex}</Text>
+                            <Text style={styles.dex}>{dex}</Text>
                             <View style={styles.arrowView}/>
                         </View>
                     </View>
@@ -192,6 +231,22 @@ class RegPhone extends Component {
             </View>
         );
     }
+
+    _renderSwitch(title:string){
+        return (
+            <View>
+                <View >
+                    <View style={styles.row}>
+                        <Text style={[styles.rowText,{marginRight:15}]}>
+                            {title}
+                        </Text>
+                        <Switch value={this.state.showAdvisersCode} onValueChange={(value)=>this.setState({showAdvisersCode:value})}/>
+                    </View>
+                </View>
+            </View>
+        );
+    }
+
 
     render() {
         var codeEnable = checkPhoneNum(this.state.phone) &&
@@ -202,25 +257,28 @@ class RegPhone extends Component {
             <ScrollView
                 style={styles.container}
                 keyboardShouldPersistTaps="always"
-                keyboardDismissMode='on-drag'>
-
+                keyboardDismissMode='interactive'>
 
                 {this._renderRowMain('用户名:', '请填入用户名',
-                    (text) => this.setState({phone: text}), 'default', true, 20, "1"
+                    (text) => this.setState({userName: text}), 'default', true, 16, "1"
                 )}
 
                 {this._renderRowMain('手机号:', '请填入手机号码',
-                    (text) => this.setState({phone: text}), 'numeric', false, 11, "1"
+                    (text) => this.setState({phone: text}), 'numeric', false, 11, "2"
                 )}
 
-                {this._renderRow('请选择所在城市:', '福州',(title) => {
-                    this.showActionSheet(title,["福州","厦门"])
+                {this._renderRow('请选择所在城市:', this.state.clicked, (title) => {
+                    this.showActionSheet(title, ["福州", "厦门"])
                 })}
                 {this._renderRowMain('密码:', '请输入密码',
-                    (text) => this.setState({phone: text}), 'default', false, 11, "1"
+                    (text) => this.setState({password: text}), 'default', false, 50, "3",true
                 )}
                 {this._renderRowMain('确认密码:', '请再次确认密码',
-                    (text) => this.setState({phone: text}), 'default', false, 11, "1"
+                    (text) => this.setState({passwordAgain: text}), 'default', false, 50, "4",true
+                )}
+                {this._renderSwitch("是否有咨询顾问码:")}
+                {this.state.showAdvisersCode && this._renderRowMain('咨询顾问码:', '非必填',
+                    (text) => this.setState({advisersCode: text}), 'default', false, 50, "5",false
                 )}
 
                 {/*<View style={{flexDirection:'row'}}>*/}
@@ -246,7 +304,7 @@ class RegPhone extends Component {
 
 
                 <BCButton
-                    disabled={!flag}
+                    //disabled={!flag}
                     isLoad={this.props.state.loaded}
                     onPress={this._goRegist.bind(this)}
                     containerStyle={styles.buttonContainerStyle2}>
@@ -297,9 +355,9 @@ const styles = StyleSheet.create({
     },
     textStyle: {
         // flex: ,
-        width: 65,
         fontSize: 14,
         color: blackFontColor,
+        marginRight:10,
     },
     textInputStyle: {
         // width:200,
@@ -348,18 +406,18 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     row: {
-        marginTop:15,
+        marginTop: 15,
         backgroundColor: 'rgba(200,200,200,0.1)',
         padding: 29 / 2,
         flexDirection: 'row',
-        alignItems:'center',
-        marginHorizontal:15,
+        alignItems: 'center',
+        marginHorizontal: 15,
     },
     row2: {
-        flex:1,
+        flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent:'space-between'
+        justifyContent: 'space-between'
     },
     rowText: {
         fontSize: 14,
@@ -388,10 +446,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        push: ()=> {
-            //index 为空 则为当前index
-            dispatch(navigateReplaceIndex('TabView'));
-        },
+        // push: ()=> {
+        //     //index 为空 则为当前index
+        //     dispatch(navigateReplaceIndex('TabView'));
+        // },
         mRegister: (state)=> {
             dispatch(register(state));
         },

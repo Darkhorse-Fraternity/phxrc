@@ -22,10 +22,13 @@ export default class MyComponet extends Component {
     static propTypes = {
         total:PropTypes.number,
         index:PropTypes.number,
+        direction:PropTypes.string,
+
     };
     static defaultProps = {
         total:4,
         index:0,
+        direction:'left',
     };
 
     __renderAnimation(i) {
@@ -52,14 +55,29 @@ export default class MyComponet extends Component {
 
     _renderSubImage(){
         let array = [];
+        console.log('test:', this.props.direction == 'left');
         for (let i=0;i<this.props.total;i++)
         {
-            if(i<this.props.index){
-                array[i] = (<Image key={i} source={steps}/>)
-            }else if(i == this.props.index){
-                array[i] = this.__renderAnimation(i)
+            if(this.props.direction == 'left') {
+
+                if (i < this.props.index) {
+                    array[i] = (<Image key={i} source={steps}/>)
+                } else if (i == this.props.index) {
+                    array[i] = this.__renderAnimation(i)
+                } else {
+                    array[i] = this.__renderPlacehold(i)
+                }
             }else {
-                array[i] = this.__renderPlacehold(i)
+                let index = this.props.index > 5 ? 5 : this.props.index
+                index = 4 - index
+                if (i < index) {
+                    array[i] = this.__renderPlacehold(i)
+                } else if (i == index) {
+                    array[i] = this.__renderAnimation(i)
+                } else {
+
+                    array[i] = (<Image key={i} source={steps}/>)
+                }
             }
 
         }

@@ -17,27 +17,29 @@ import {mainColor} from '../../configure'
 import {connect} from 'react-redux'
 import * as immutable from 'immutable';
 import BaseListView from '../../components/Base/BaseListView';
-import {listLoad, listLoadMore} from '../../redux/actions/list'
 import {push} from '../../redux/nav'
 
-const listKey = 'listKey'
-function myListLoad(more: bool = false) {
-    return (dispatch, getState) => {
-    }
-}
+
+import {phxr_query_person_assets_list } from '../../request/qzapi'
+import {request} from '../../redux/actions/req'
+
 
 
 @connect(
     state =>({
-        data: state.list.get(listKey),
+        //state:state.util.get()
+        data:state.req.get('phxr_query_person_assets_list')
     }),
     dispatch =>({
         //...bindActionCreators({},dispatch),
-        load: ()=>dispatch(myListLoad()),
-        loadMore: ()=>dispatch(myListLoad(true)),
-        push: (key)=> {
-            // dispatch(navigatePush(key));
-        },
+        load:()=>{
+            dispatch(async (dispatch,getState)=>{
+                const uid = getState().login.data.userId
+                const params = phxr_query_person_assets_list(uid)
+                await dispatch(request('phxr_query_person_assets_list',params))
+            })
+
+        }
     })
 )
 
@@ -48,9 +50,17 @@ export default class List extends Component {
 
     static propTypes = {
         load: PropTypes.func.isRequired,
-        loadMore: PropTypes.func.isRequired,
     };
-    static defaultProps = {};
+
+    static defaultProps = {
+        data:immutable.fromJS({
+            data:[]
+        })
+    };
+
+    componentDidMount() {
+        this.props.load()
+    }
 
     shouldComponentUpdate(nextProps: Object) {
         return !immutable.is(this.props.data, nextProps.data)
@@ -63,10 +73,10 @@ export default class List extends Component {
             <TouchableOpacity
                 style={{marginTop:10}}
                 onPress={()=>{
-                    push('AssetsInfo')
+                    push({key:'AssetsInfo',item:itme})
             }}>
                 <View style={styles.row}>
-                        <Text>福州鼓楼区xx小区x号楼</Text>
+                        <Text>{itme.assetsName}</Text>
                     <View style={styles.arrowView}/>
                 </View>
             </TouchableOpacity>
@@ -75,10 +85,9 @@ export default class List extends Component {
 
     render() {
 
-        const loadStatu = this.props.data && this.props.data.get('loadStatu')
-        let listData = this.props.data && this.props.data.get('listData')
+        let listData = this.props.data && this.props.data.get('data')
         listData = listData && listData.toJS()
-        listData = ['111', '222']
+        // listData = ['111', '222']
         return (
             <BaseListView
                 //renderHeader={this._renderHeader}
@@ -87,7 +96,6 @@ export default class List extends Component {
                 loadStatu={'LIST_NORMAL'}
                 loadData={this.props.load}
                 dataSource={listData}
-                loadMore={this.props.loadMore}
                 renderRow={this.renderRow.bind(this)}
             />
         );

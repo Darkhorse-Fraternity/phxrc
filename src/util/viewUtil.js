@@ -49,7 +49,7 @@ export function renderNavSenderButton(tap:Function) {
             styleDisabled={{color:lightContainingColor}}
             containerStyle= {styles.rightButton}
             disabled ={disabled}>
-          发送
+          保存
         </WBButton>
     )
   }
@@ -127,7 +127,8 @@ const styles = StyleSheet.create({
   barRightButtonText: {
     textAlign: 'right',
     fontSize: 15,
-    fontWeight:'normal'
+    fontWeight:'normal',
+    color:'black'
   },
 
   barLeftButtonText: {
