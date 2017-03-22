@@ -164,7 +164,7 @@ export  default  class Account extends Component {
                 {this._renderRow('标题', data.title, () => {
                 })}
 
-                {this._renderRow('借款额度', data.financingLimit||0 + "万元", () => {
+                {this._renderRow('借款额度', (data.financingLimit||0) + "万元", () => {
                 })}
                 {this._renderRow('到款时间', data.moneyTime||"等待", () => {
                 })}

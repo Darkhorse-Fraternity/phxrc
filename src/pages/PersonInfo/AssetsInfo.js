@@ -164,7 +164,7 @@ export  default  class Account extends Component {
                 })}
                 {this._renderRow('车牌号', data.plateNumber,"", () => {
                 })}
-                {this._renderRow('公里数', data.kilometers,"公里", () => {
+                {this._renderRow('公里数', data.kilometers,"万公里", () => {
                 })}
                 {this._renderRow('出产日期', data.productionDate,"", () => {
                 })}
@@ -182,15 +182,11 @@ export  default  class Account extends Component {
                 })}
                 {this._renderRow('黑牌车', data.blackPlate == "0"?"否":"是","", () => {
                 })}
-                {this._renderRow('自有机动车', data.owner == "0"?"否":"是", "",() => {
-                })}
+
                 {this._renderRow('所有人的姓名', data.ownerName ,"", () => {
                 })}
-                {this._renderRow('所有人的身份证', data.ownerIdCardNo, "",() => {
-                })}
-                {this._renderRow('所有人的电话', data.ownerPhoneNo ,"", () => {
-                })}
-                {this._renderRow('于本人关系', data.ownerRelation , "",() => {
+
+                {this._renderRow('车辆所有人与本人关系', data.ownerRelation , "",() => {
                 })}
 
 

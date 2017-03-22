@@ -58,6 +58,9 @@ export  default  class Account extends Component {
 
 
     _renderRow(title: string, des: string, onPress: Function) {
+
+
+
         return (
             <View>
                 <TouchableHighlight >
@@ -108,11 +111,11 @@ export  default  class Account extends Component {
                 {this._renderRow('户籍地址', data.familyRegisterAddr,"familyRegisterAddr", () => {})}
                 {this._renderRow('工作单位', data.companyName,"companyName", () => {})}
                 {this._renderRow('单位地址', data.officeAddr,"officeAddr", () => {})}
-                {this._renderRow('单位性质', data.companyNature, "companyNature",() => {})}
-                {this._renderRow('单位规模', data.companySize, "companySize",() => {})}
-                {this._renderRow('单位人员规模', data.companySize,"companySize", () => {})}
+                {this._renderRow('单位性质', ["政府机关", "事业单位", "私企","外企"][data.companyNature], "companyNature",() => {})}
+                {/*{this._renderRow('单位规模', data.companySize, "companySize",() => {})}*/}
+                {this._renderRow('单位人员规模', ["20人以下", "20人至50人", "50人至100人","100人以上"][data.companySize],"companySize", () => {})}
                 {this._renderRow('在岗职位', data.job,"job", () => {})}
-                {this._renderRow('职位水平', data.jobLevel,"jobLevel", () => {})}
+                {this._renderRow('职位水平', ["普通员工", "中层管理", "高层管理","高层管理","企业主","个体经营者"][data.jobLevel],"jobLevel", () => {})}
                 {this._renderRow('入职时间', data.entryDate, "entryDate",() => {})}
                 {this._renderRow('月工资水平', data.monthlyWages,"monthlyWages", () => {})}
                 {this._renderRow('提供工作证明文件', data.provideWorkCertificate?"是":"否",

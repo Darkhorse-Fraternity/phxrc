@@ -38,9 +38,9 @@ const DEFAULT_OPTIONS = {
 
 export default function imagePicker(options:Object,callBack:Function){
 
-
+  T
   // StatusBar.setBarStyle('default', false);
-  ImagePicker.showImagePicker({...DEFAULT_OPTIONS, ...options}, (response) => {
+  ImagePicker.showImagePicker({...DEFAUL_OPTIONS, ...options}, (response) => {
   // console.log('Response = ', response);
     // StatusBar.setBarStyle('light-content', false);
     // console.log(response);

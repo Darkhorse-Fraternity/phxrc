@@ -185,6 +185,7 @@ class WBSetting extends Component {
                 })}
 
 
+
                 <View style={styles.groupSpace}/>
                 <TouchableHighlight style={[styles.row,{justifyContent:'center'}]} onPress={this._logout}>
                     <Text style={[styles.rowText,{fontSize:13}]}>
