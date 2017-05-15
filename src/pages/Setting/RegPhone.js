@@ -11,7 +11,10 @@ import  {
     Picker,
     LayoutAnimation,
     TouchableOpacity,
-    Switch
+    Switch,
+    Image,
+    Dimensions,
+    TouchableWithoutFeedback
 } from 'react-native'
 import {OS} from '../../util/';
 
@@ -21,7 +24,7 @@ import {request} from '../../request'
 import {requestSmsCode} from '../../request/leanCloud'
 import {deepFontColor, backViewColor, blackFontColor, mainColor} from '../../configure'
 import {connect} from 'react-redux'
-import {navigateReplaceIndex, navigatePush} from '../../redux/actions/nav'
+import {navigateReplaceIndex, navigatePush,navigatePop} from '../../redux/actions/nav'
 import {register} from '../../redux/actions/login'
 import {checkPhoneNum, Toast} from '../../util'
 
@@ -43,6 +46,7 @@ class RegPhone extends Component {
             clicked:'福州',
             advisersCode:"",
             showAdvisersCode:false,
+            choice:true,
         };
     }
 
@@ -102,7 +106,13 @@ class RegPhone extends Component {
         this.props.pushWebView({key: 'WebView', title: '普汇信融用户服务协议', url: webUrl});
     };
 
+
     _goRegist() {
+
+        if(!this.state.choice){
+            Toast.show('需要同意《融资无忧用户服务条款》才能注册。');
+            return;
+        }
 
         //判断用户名
         if(this.state.userName.length == 0){
@@ -253,33 +263,79 @@ class RegPhone extends Component {
             this.state.time == 60 && !this.state.isTap;
         const reg = /^\d{6}$/;
         const flag = reg.test(this.state.ymCode) && checkPhoneNum(this.state.phone)
+        const logo2 = require('../../../source/img/login/register_logo.png')
+        const back = require('../../../source/img/login/btn_back.png')
+        const choice_click = require('../../../source/img/login/choice_click.png')
+        const choice = require('../../../source/img/login/choice.png')
         return (
             <ScrollView
                 style={styles.container}
                 keyboardShouldPersistTaps="always"
                 keyboardDismissMode='interactive'>
 
-                {this._renderRowMain('用户名:', '请填入用户名',
-                    (text) => this.setState({userName: text}), 'default', true, 16, "1"
-                )}
+                <TouchableOpacity style={{width:50,
+                           height:50,
+                            top:35,
+                           left:15,
+                           zIndex:100,
+                           position:'absolute'}} onPress={()=>this.props.pop()}>
+                    <Image source={back}
+                    />
+                </TouchableOpacity>
+                <Image source={logo2} style={styles.logo}/>
 
-                {this._renderRowMain('手机号:', '请填入手机号码',
-                    (text) => this.setState({phone: text}), 'numeric', false, 11, "2"
-                )}
+                <View style={{backgroundColor:'white',marginTop:20}}>
+                    {this._renderRowMain('用户名:', '请填入用户名',
+                        (text) => this.setState({userName: text}), 'default', true, 16, "1"
+                    )}
+                    <View style={styles.line}/>
+                    {this._renderRowMain('手机号:', '请填入手机号码',
+                        (text) => this.setState({phone: text}), 'numeric', false, 11, "2"
+                    )}
 
-                {this._renderRow('请选择所在城市:', this.state.clicked, (title) => {
-                    this.showActionSheet(title, ["福州", "厦门"])
-                })}
-                {this._renderRowMain('密码:', '请输入密码',
-                    (text) => this.setState({password: text}), 'default', false, 50, "3",true
-                )}
-                {this._renderRowMain('确认密码:', '请再次确认密码',
-                    (text) => this.setState({passwordAgain: text}), 'default', false, 50, "4",true
-                )}
-                {this._renderSwitch("是否有咨询顾问码:")}
-                {this.state.showAdvisersCode && this._renderRowMain('咨询顾问码:', '非必填',
-                    (text) => this.setState({advisersCode: text}), 'default', false, 50, "5",false
-                )}
+                    <View style={styles.line}/>
+                    {this._renderRowMain('密码:', '请输入密码',
+                        (text) => this.setState({password: text}), 'default', false, 50, "4", true
+                    )}
+                    <View style={styles.line}/>
+                    {this._renderRowMain('确认密码:', '请再次确认密码',
+                        (text) => this.setState({passwordAgain: text}), 'default', false, 50, "5", true
+                    )}
+                    <View style={styles.line}/>
+
+
+                    <View style={{flexDirection:'row'}}>
+                        {this._renderRowMain('验证码:', '输入您收到的验证码',
+                            (text) => {
+                                this.setState({ymCode: text})
+                            },
+                            'numeric'
+                            , false, 6, "3"
+                        )}
+
+                        <BCButton containerStyle={styles.buttonContainerStyle}
+                                  disabled={!codeEnable}
+                                  loaded={this.state.timeLoad}
+                            //styleDisabled={{fontWeight:'normal'}}
+                                  onPress={this._onClickCode.bind(this)}
+                                  style={{fontWeight:'400',fontSize:14,color:'black'}}
+                        >
+                            {this.state.time == 60 || this.state.time == 0 ? '获取验证码' :
+                            this.state.time.toString() + '秒'}
+                        </BCButton>
+                    </View>
+                    <View style={styles.line}/>
+                    {this._renderRow('请选择所在城市:', this.state.clicked, (title) => {
+                        this.showActionSheet(title, ["福州", "厦门"])
+                    })}
+                    <View style={styles.line}/>
+                    {this._renderSwitch("是否有咨询顾问码:")}
+                    <View style={styles.line}/>
+                    {this.state.showAdvisersCode && this._renderRowMain('咨询顾问码:', '非必填',
+                        (text) => this.setState({advisersCode: text}), 'default', false, 50, "5",false
+                    )}
+                </View>
+
 
                 {/*<View style={{flexDirection:'row'}}>*/}
                 {/*{this._renderRowMain('验证码:', '输入您收到的验证码',*/}
@@ -302,7 +358,19 @@ class RegPhone extends Component {
                 {/*</BCButton>*/}
                 {/*</View>*/}
 
-
+                <View style={styles.bottom}>
+                    <TouchableWithoutFeedback onPress={()=>{
+                        this.setState({choice:!this.state.choice})
+                    }}>
+                        <Image source={this.state.choice?choice_click:choice}/>
+                    </TouchableWithoutFeedback>
+                    <Text style={styles.protocolPre}>我已阅读并同意</Text>
+                    <Button
+                        onPress={this._gowebView}
+                        style={styles.protocolSuf}>
+                        《融资无忧用户服务条款》
+                    </Button>
+                </View>
                 <BCButton
                     //disabled={!flag}
                     isLoad={this.props.state.loaded}
@@ -310,14 +378,7 @@ class RegPhone extends Component {
                     containerStyle={styles.buttonContainerStyle2}>
                     注册
                 </BCButton>
-                <View style={styles.bottom}>
-                    <Text style={styles.protocolPre}>点击注册,即表示已阅读并同意</Text>
-                    <Button
-                        onPress={this._gowebView}
-                        style={styles.protocolSuf}>
-                        《普汇信融用户服务条款》
-                    </Button>
-                </View>
+
             </ScrollView>
         );
     }
@@ -327,37 +388,41 @@ class RegPhone extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white',
-        paddingTop: 20,
+        backgroundColor: '#eeeeee',
     },
 
-
+    logo: {
+        marginTop: 0,
+        width: Dimensions.get('window').width,
+        height: 130,
+    },
     rowMainStyle: {
 
         flex: 1,
         height: 40,
-        marginTop: 10,
-        backgroundColor: 'rgba(200,200,200,0.1)',
+        marginVertical: 5,
         paddingHorizontal: 15,
         flexDirection: 'row',
         alignItems: 'center',
         marginHorizontal: 15,
+        // backgroundColor:'red'
     },
     buttonContainerStyle: {
         marginRight: 15,
         marginLeft: -5,
-        height: 40,
-        marginTop: 10,
+        height: 35,
+        marginVertical: 5,
         paddingHorizontal: 15,
         alignSelf: 'center',
 
         justifyContent: 'center',
+        backgroundColor: '#eeeeee'
     },
     textStyle: {
         // flex: ,
+        width: 120,
         fontSize: 14,
-        color: blackFontColor,
-        marginRight:10,
+        color: 'rgb(120,120,120)',
     },
     textInputStyle: {
         // width:200,
@@ -382,21 +447,21 @@ const styles = StyleSheet.create({
         color: deepFontColor,
     },
     buttonContainerStyle2: {
-        marginLeft: 29 / 2,
-        marginRight: 29 / 2,
-        marginTop: 30,
+        marginLeft: 29,
+        marginRight: 29,
+        marginTop: 80,
+        marginBottom:80,
         height: 40,
         justifyContent: 'center',
     },
 
     protocolPre: {
-        marginTop: 8,
-        fontSize: 11,
+        marginLeft:5,
+        fontSize: 13,
         color: '#9e9e9e',
     },
     protocolSuf: {
-        marginTop: 8,
-        fontSize: 11,
+        fontSize: 13,
         color: mainColor,
     },
 
@@ -404,10 +469,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop:25,
     },
     row: {
-        marginTop: 15,
-        backgroundColor: 'rgba(200,200,200,0.1)',
+        marginVertical: 5,
         padding: 29 / 2,
         flexDirection: 'row',
         alignItems: 'center',
@@ -422,17 +487,24 @@ const styles = StyleSheet.create({
     rowText: {
         fontSize: 14,
         // fontWeight: '500',
-        color: blackFontColor,
+        color: 'rgb(120,120,120)',
     },
     arrowView: {
         borderBottomWidth: StyleSheet.hairlineWidth * 2,
         borderRightWidth: StyleSheet.hairlineWidth * 2,
         borderColor: '#8c8c85',
-        transform: [{rotate: '315deg'}],
-        marginLeft: 5,
+        transform: [{rotate: '45deg'}],
+        marginRight: 10,
+        marginBottom: 2,
         width: 10,
         height: 10,
     },
+    line: {
+        height: StyleSheet.hairlineWidth,
+        backgroundColor: 'rgb(200,200,200)',
+        width: Dimensions.get('window').width - 50,
+        alignSelf: 'center'
+    }
 })
 
 
@@ -455,7 +527,10 @@ const mapDispatchToProps = (dispatch) => {
         },
         pushWebView: (params)=> {
             dispatch(navigatePush(params));
-        }
+        },
+        pop: ()=> {
+            dispatch(navigatePop())
+        },
 
     }
 }
