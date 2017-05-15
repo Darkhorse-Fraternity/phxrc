@@ -196,10 +196,24 @@ export function logout(): Function {
 
     return dispatch => {
         dispatch(logout2());//先退出
-        return loadAccount(ret => {
-            //加载本地数据。
-            dispatch(_loadAccount(ret));
-        });
+        return (dispatch,getState) => {
+            const phone = getState().login.data.phoneNo
+            const param = phxr_app_loginOut(phone)
+            request(param,(res)=>{
+                if (res.data.rspCode == "0000") {
+                    //加入sessionToken
+
+                } else {
+
+                }
+                console.log('res:', res);
+            })
+            dispatch(logout2());//先退出
+            return loadAccount(ret => {
+                //加载本地数据。
+                dispatch(_loadAccount(ret));
+            });
+        }
     }
 
 

@@ -71,7 +71,7 @@ function _backAnroid (getState) {
         const index = state.index;
         console.log('index:', index);
         //idnex 前两个分别是登录和tabview
-        if (index > 1) {
+        if (index > 0) {
             pop();
             return true;
         }

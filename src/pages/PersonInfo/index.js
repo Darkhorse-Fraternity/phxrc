@@ -10,6 +10,7 @@ import {
     Picker,
     Image,
     LayoutAnimation,
+    Alert
 } from 'react-native'
 import {pixel, navbarHeight} from '../../util/'
 import imagePicker from '../../util/imagePicker'
@@ -232,7 +233,7 @@ class PersonInfo extends React.Component {
         // console.log('test:',this.props.userData);
 
         return (
-            <AniScrollView animation="fadeIn" duration={500} delay={100} style={styles.list}>
+            <ScrollView animation="fadeIn" duration={500} delay={100} style={styles.list}>
                 <View style={styles.groupSpace}/>
                 {/*{this._renderHeadRow(this.props.picker)}*/}
 
@@ -296,10 +297,18 @@ class PersonInfo extends React.Component {
                 <View style={styles.group}>
                     {this._renderRow('退出登录', "", () => {
                         // NavigationManager.goToPage("AlterPwd");
-                        this.props.logout()
+                        Alert.alert(
+                            '确定要退出吗？',
+                            "",
+                            [
+                                {text: '取消', onPress: () => {}},
+                                {text: '确定', onPress: () =>{
+                                    this.props.logout();
+                                }},
+                            ])
                     })}
                 </View>
-            </AniScrollView>
+            </ScrollView>
         );
     }
 }

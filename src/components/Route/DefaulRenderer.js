@@ -3,31 +3,31 @@
 'use strict'
 
 import React, {
-  Component,
-  PropTypes,
+    Component,
+    PropTypes,
 } from 'react';
 import {
-  Animated,
-  NavigationExperimental,
-  View,
-  StyleSheet,
+    Animated,
+    NavigationExperimental,
+    View,
+    StyleSheet,
 } from 'react-native';
 // import {BACK_ACTION} from '../actions/ActionTypes'
 import type {
-  NavigationSceneRendererProps,
+    NavigationSceneRendererProps,
 } from 'NavigationTypeDefinition';
 
 import Scene from './Scene'
 import NavBar from './NavBar'
 
 const {
-  CardStack: NavigationCardStack,
-  Card: NavigationCard,
+    CardStack: NavigationCardStack,
+    Card: NavigationCard,
 } = NavigationExperimental;
 
 const {
-  CardStackPanResponder: NavigationCardStackPanResponder,
-  CardStackStyleInterpolator: NavigationCardStackStyleInterpolator,
+    CardStackPanResponder: NavigationCardStackPanResponder,
+    CardStackStyleInterpolator: NavigationCardStackStyleInterpolator,
 } = NavigationCard;
 
 
@@ -63,16 +63,16 @@ export default class DefaultRenderer extends Component {
 
   _renderHeader(props: NavigationSceneRendererProps):ReactElement<any> {
     return (
-      <NavBar {...props} {...this.props}/>
+        <NavBar {...props} {...this.props}/>
     );
   }
 
   //主渲染页面。
-    _renderScene(props: NavigationSceneRendererProps) {
-      return (
+  _renderScene(props: NavigationSceneRendererProps) {
+    return (
         <Scene {...props} />
-      );
-    }
+    );
+  }
 
   renderCard(/* NavigationSceneRendererProps */ props:Object):ReactElement<any>{
     const { key, direction } = props.scene.route;
@@ -80,8 +80,8 @@ export default class DefaultRenderer extends Component {
     const isVertical = direction === 'vertical';
     if (typeof(animationStyle) === 'undefined') {
       animationStyle = (isVertical ?
-        NavigationCardStackStyleInterpolator.forVertical(props) :
-        NavigationCardStackStyleInterpolator.forHorizontal(props));
+          NavigationCardStackStyleInterpolator.forVertical(props) :
+          NavigationCardStackStyleInterpolator.forHorizontal(props));
     }
 
     if (typeof(panHandlers) === 'undefined') {
@@ -91,15 +91,15 @@ export default class DefaultRenderer extends Component {
       //     NavigationCardStackPanResponder.forHorizontal(props,{type:'BackAction'}));
     }
     return (
-      <NavigationCard
-        {...props}
-        key={'card_'+key}
-        style={animationStyle}
-        //style={{flex:1}}
-        panHandlers={panHandlers}
-        onNavigateBack={()=>this.props.onNavigate({type:'back'})}
-        renderScene={this._renderScene}
-      />
+        <NavigationCard
+            {...props}
+            key={'card_'+key}
+            style={animationStyle}
+            //style={{flex:1}}
+            panHandlers={panHandlers}
+            onNavigateBack={()=>this.props.onNavigate({type:'back'})}
+            renderScene={this._renderScene}
+        />
     );
   }
 
@@ -114,56 +114,43 @@ export default class DefaultRenderer extends Component {
     const optionals = {};
     const selected = navigationState.routes[navigationState.index];
     let direction = navigationState.direction
-    const applyAnimation = selected.applyAnimation || navigationState.applyAnimation;
+    const animation = selected.animation
     const style = selected.style || navigationState.style;
 
-    if (applyAnimation) {
-      optionals.applyAnimation = applyAnimation;
-    } else {
-      let duration = selected.duration;
-      if (duration === null || duration === undefined) duration = navigationState.duration;
-      if (duration !== null && duration !== undefined) {
-        optionals.applyAnimation = (pos, navState) => {
-          if (duration === 0) {
-            pos.setValue(navState.index);
-          } else {
-            Animated.timing(pos, { toValue: navState.index, duration }).start();
-          }
-        };
-      }
+    if (animation  == false) {
+      // optionals.cardStyleInterpolator = ()=>{}
     }
 
-      let { gestureResponseDistance } = selected;
+    let { gestureResponseDistance } = selected;
 
-      if(direction != 'vertical' ){
-        gestureResponseDistance = gestureResponseDistance || 50;
-      }else {
-        gestureResponseDistance = 0.1
-      }
+    if(direction != 'vertical' ){
+      gestureResponseDistance = gestureResponseDistance || 50;
+    }else {
+      gestureResponseDistance = 0.1
+    }
     return (
 
-      <NavigationCardStack
-        //key = {key}
+        <NavigationCardStack
+            //key = {key}
 
-        navigationState={navigationState}
-        onNavigateBack={()=>onNavigate({type:'back'})}
-        style={[styles.animatedView, style, this.props.style]}
-        //style={{flex:1}}
-        gestureResponseDistance={gestureResponseDistance}
-        direction={direction}
-        renderHeader={this._renderHeader.bind(this)}
-        //render={ret=>console.log('asd',ret)}
-        //renderScene={this.renderCard.bind(this)}
-        //onNavigate={onNavigate}
-        renderScene={this._renderScene}
-        //render={props =>(
-        //  <View style={{flex:1}}>
-        //    {this.renderCard(props)}
-        //    {this._renderHeader(props)}
-        //  </View>
-        //)}
-        {...optionals}
-      />
+            navigationState={navigationState}
+            onNavigateBack={()=>onNavigate({type:'back'})}
+            style={[styles.animatedView, style, this.props.style]}
+            //style={{flex:1}}
+            gestureResponseDistance={gestureResponseDistance}
+            direction={direction}
+            renderHeader={this._renderHeader.bind(this)}
+            //render={ret=>console.log('asd',ret)}
+            //renderScene={this.renderCard.bind(this)}
+            //onNavigate={onNavigate}
+            renderScene={this._renderScene}
+            //render={props =>(
+            //  <View style={{flex:1}}>
+            //    {this.renderCard(props)}
+            //    {this._renderHeader(props)}
+            //  </Vi
+            {...optionals}
+        />
     );
   }
 }

@@ -10,7 +10,7 @@
 
 export const pageConfig = {
     'TabView': {
-        title: '普惠信融', hideBackBtn: true, gestureResponseDistance: 0.0001,direction: 'vertical'
+        title: '融资医生', hideBackBtn: true, gestureResponseDistance: 0.0001,direction: 'vertical',tintColor:'white'
     },
     'LoginView': {
         title: '登录', hideNavBar: true, gestureResponseDistance: 0.0001,
@@ -22,9 +22,9 @@ export const pageConfig = {
     "BaseWebView": {title: "加载中。。", gestureResponseDistance: 0.0001},
     "CourseInfoView": {title: "课程详情",},
     "LessonEvaluateView": {title: "课程评价",},
-    "PersonInfo": {title: "设置",},
+    "PersonInfo": {title: "设置",hideNavBar: false},
     "MyOrder": {title: "我的订单",},
-    "Setting": {title: "设置",},
+    "Setting": {title: "设置",hideNavBar: false},
     "FindPwd": {title: "找回密码",},
     'Feedback': {title: "意见反馈",},
     "ClassRecord": {title: "课时流水",},
@@ -48,13 +48,16 @@ export const pageConfig = {
     'iRate': {title: '评价'},
     'introDetail': {title: '回复'},
     'About': {title: '关于我们'},
-    'Home' : {title: "普汇信融",direction: 'vertical'},
+    'Home' : {title: "融资医生",direction: 'vertical'},
     "Account" : {title:'账户信息'},
     "UserInfo" : {title:'个人信息'},
     "CreditInfo" : {title:'信用信息'},
     "AssetsInfo" : {title:"资产信息"},
     "AssetsList" : {title:"资产列表"},
     "FinanceDetail" : {title:"融资详情"},
+    "GW":{title:"顾问",hideNavBar:true},
+    "MSG":{title:"消息",hideNavBar:true},
+    "ZG":{title:"顾问",hideNavBar:true},
 }
 
 export function config(key: string): Object {

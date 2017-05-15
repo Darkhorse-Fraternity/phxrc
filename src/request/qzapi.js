@@ -11,7 +11,8 @@ import { methodType, cacheType } from './'
  */
 export function phxr_register(userName,phoneNo,pwd,registType,hasAdvisersCode,advisersCode,province,city) {
     return {
-        path:'/phxr_register',
+        host:'103.236.253.138:9090',
+        path:'/phxrProject/app/phxr/ucenter/register',
         method:methodType.post,
         params:{
             userName,
@@ -36,7 +37,8 @@ export function phxr_login(phoneNo,pwd,verificationCode,userType) {
     const  r = /^\+?[1-9][0-9]*$/;
     const param = r.test(phoneNo)?{phoneNo}:{userName:phoneNo}
     return {
-        path:'/phxr_login',
+        host:'103.236.253.138:9090',
+        path:'/phxrProject/app/phxr/ucenter/vipLogin',
         method:methodType.post,
         params:{
             pwd,
@@ -53,7 +55,8 @@ export function phxr_login(phoneNo,pwd,verificationCode,userType) {
  */
 export function phxr_forget_pwd(phoneNo,idCardNo,verificationCode) {
     return {
-        path:'/phxr_forget_pwd',
+        host:'103.236.253.138:9090',
+        path:'/phxrProject/app/phxr/ucenter/vipForgetPwd',
         method:methodType.post,
         params:{
             phoneNo,
@@ -71,7 +74,8 @@ export function phxr_verification_code(phoneNo,codeType) {
     const  r = /^\+?[1-9][0-9]*$/;
     const param = r.test(phoneNo)?{phoneNo}:{userName:phoneNo,}
     return {
-        path:'/phxr_verification_code',
+        host:'103.236.253.138:9090',
+        path:'/phxrProject/app/phxr/ucenter/sendSmsCode',
         method:methodType.post,
         params:{
             ...param,
@@ -467,5 +471,34 @@ export function phxr_query_config(dictId,dictNote,classId,classNote,subclass,sub
 }
 
 
+/*
+ *   4.33 首页接口
+ *
+ */
+export function phxr_app_home(versionCode,platformType) {
+    return {
+        host:'103.236.253.138:9090',
+        path:'/phxrProject/app/phxr/apphome/appList',
+        method:methodType.post,
+        params:{
+            versionCode,
+            platformType:platformType == 'ios'? "0" : "1",
+            appType:0,
+        },
+    }
+}
 
+export function phxr_app_loginOut(phoneNo) {
+    const  r = /^\+?[1-9][0-9]*$/;
+    const param = r.test(phoneNo)?{phoneNo}:{userName:phoneNo,}
+    return {
+        host:'103.236.253.138:9090',
+        path:'/phxrProject/app/phxr/ucenter/loginOut',
+        method:methodType.post,
+        params:{
+            ...param,
+            userType:0,
+        },
+    }
+}
 
