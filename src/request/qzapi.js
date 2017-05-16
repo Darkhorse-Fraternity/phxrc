@@ -33,7 +33,7 @@ export function phxr_register(userName,phoneNo,pwd,registType,hasAdvisersCode,ad
  *   4.2 登录
  *
  */
-export function phxr_login(phoneNo,pwd,verificationCode,userType) {
+export function phxr_login(phoneNo,pwd,userType) {
     const  r = /^\+?[1-9][0-9]*$/;
     const param = r.test(phoneNo)?{phoneNo}:{userName:phoneNo}
     return {
@@ -43,7 +43,6 @@ export function phxr_login(phoneNo,pwd,verificationCode,userType) {
         params:{
             pwd,
             userType,
-            verificationCode,
             ...param,
         },
     }

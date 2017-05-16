@@ -24,7 +24,7 @@ import {routerReducer } from 'react-router-redux'
    if (action.type === 'LOGOUT') {
  	// 	umeng.pageEnd('设置');
  	// 	umeng.pageStart("登录");
-     state = undefined
+     // state = undefined
    }
 
  	if (action.type === "NAV_PUSH") {

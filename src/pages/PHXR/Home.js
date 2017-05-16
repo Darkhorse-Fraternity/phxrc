@@ -219,8 +219,8 @@ export  default  class Home extends Component {
                 </View>
 
                 {this.__renderNews(rollArealist)}
-                <View style={{backgroundColor:'white'}}>
-                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                <View style={{backgroundColor:'#dcdcdc',marginBottom:100}}>
+                    <ScrollView style={{backgroundColor:'white',paddingBottom:20}} horizontal={true} showsHorizontalScrollIndicator={false}>
                         {classifyArealist.map((obj, i)=> {
                             return this.__renderclassifyArea(obj, i)
                         })}
@@ -309,13 +309,13 @@ const styles = StyleSheet.create({
     },
     classfyAreaText: {
         fontSize: 13,
-        marginTop: 5,
+        marginTop: 2,
     },
     line: {
         height: StyleSheet.hairlineWidth,
         width: Dimensions.get('window').width,
         backgroundColor: 'rgba(200,200,200,0.2)',
-        marginTop: 20,
+        // marginTop: 20,
     },
     redTip: {
         width: 6,
@@ -330,6 +330,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
     },
     hotArea: {
+        marginTop:10,
         flexWrap: "wrap",
         flexDirection: 'row',
         width: Dimensions.get('window').width,
@@ -342,6 +343,7 @@ const styles = StyleSheet.create({
         height: (Dimensions.get('window').width) / 4,
         borderColor: 'rgba(200,200,200,0.2)',
         borderWidth: StyleSheet.hairlineWidth,
+        backgroundColor:'white'
     },
     hotAreaImage: {
         width: (Dimensions.get('window').width) / 8,

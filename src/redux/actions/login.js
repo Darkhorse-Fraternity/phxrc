@@ -83,7 +83,7 @@ export function login(state: Object): Function {
 
         dispatch(_loginRequest());
 
-        const parame = phxr_login(state.phone,state.password,state.ymCode,0)
+        const parame = phxr_login(state.phone,state.password,0)
 
         return request(parame, (response)=> {
 
@@ -94,7 +94,9 @@ export function login(state: Object): Function {
                 // console.log('test:', '1111');
                 dispatch(_loginSucceed(response.data.result));
                 // console.log('test:', '2222');
-                dispatch(navigatePush('TabView'));
+                // dispatch(navigatePush('TabView'));
+                dispatch(navigatePop())
+
             } else {
                 Toast.show(response.data.rspMsg)
                 dispatch(_loginFailed(response));

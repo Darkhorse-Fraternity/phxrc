@@ -10,7 +10,7 @@
 
 export const pageConfig = {
     'TabView': {
-        title: '融资医生', hideBackBtn: true, gestureResponseDistance: 0.0001,direction: 'vertical',tintColor:'white'
+        title: '融资无忧', hideBackBtn: true, gestureResponseDistance: 0.0001,direction: 'vertical',tintColor:'white'
     },
     'LoginView': {
         title: '登录', hideNavBar: true, gestureResponseDistance: 0.0001,
@@ -48,7 +48,7 @@ export const pageConfig = {
     'iRate': {title: '评价'},
     'introDetail': {title: '回复'},
     'About': {title: '关于我们'},
-    'Home' : {title: "融资医生",direction: 'vertical'},
+    'Home' : {title: "融资无忧",direction: 'vertical',hideNavBar:false},
     "Account" : {title:'账户信息'},
     "UserInfo" : {title:'个人信息'},
     "CreditInfo" : {title:'信用信息'},

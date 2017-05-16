@@ -31,7 +31,7 @@ const WEBVIEW_REF = 'webview';
 @connect(
     state =>({
         //state:state.util.get()
-        userId: state.login.data.userId
+        userId: state.login.data.userId+""
     }),
     dispatch =>({
         //...bindActionCreators({},dispatch),

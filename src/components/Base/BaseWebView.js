@@ -69,13 +69,13 @@ class BaseWebView extends Component {
     }
 
     componentDidMount() {
-        this.props.refresh({renderLeftComponent:this.renderLeftComponent.bind(this)});
+        this.props.refresh({renderLeftComponent:this.renderLeftComponent.bind(this),title:'加载中。。'});
     }
 
     _onNavigationStateChange(state:Object){
         // console.log('state:',state);
-        if(state.title && state.title.length){
-            this.props.refresh({title:state.title});
+        if(state.title && state.title.length > 0 ){
+            this && this.props.refresh({title:state.title});
         }
         this.canGoBack = state.canGoBack;
     }
@@ -110,9 +110,9 @@ class BaseWebView extends Component {
      * @param  {[type]} event [description]
      * @return {[type]}       [description]
      */
-     _onShouldStartLoadWithRequest(event:Object) {
-      //Implement any custom loading logic here, don't forget to return!
-      console.log("onShouldStartLoadWithRequest:", event.url);
+    _onShouldStartLoadWithRequest(event:Object) {
+        //Implement any custom loading logic here, don't forget to return!
+        console.log("onShouldStartLoadWithRequest:", event.url);
         if(event.url.startsWith('http://') || event.url.startsWith('https://')) {
             return true;
         }else{
@@ -129,7 +129,7 @@ class BaseWebView extends Component {
             })
         }
 
-      return false;
+        return false;
     }
 
     render() {
@@ -142,7 +142,7 @@ class BaseWebView extends Component {
                     ref={WEBVIEW_REF}
                     automaticallyAdjustContentInsets={false}
                     style={styles.webView}
-                    source={{uri: this.props.scene.route.url}}
+                    source={{uri: this.props.scene.route.url,headers:this.props.scene.route.headers}}
                     // javaScriptEnabled={false}
                     domStorageEnabled={true}
                     decelerationRate="normal"
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
     arrowView: {
         borderBottomWidth: StyleSheet.hairlineWidth * 2,
         borderRightWidth: StyleSheet.hairlineWidth * 2,
-        borderColor: '#8c8c85',
+        borderColor: 'white',
         transform: [{rotate: '135deg'}],
         marginLeft: 15,
         width: 10,
