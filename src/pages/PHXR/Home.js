@@ -138,7 +138,7 @@ export  default  class Home extends Component {
         // console.log('data:', data);
         return (
             <Swiper
-                style={styles.news} height={50}
+                style={styles.news} height={40}
                 showsPagination={false} autoplayTimeout={10}
                 autoplay={true}>
                 {data.map((obj, i)=> {
@@ -219,7 +219,7 @@ export  default  class Home extends Component {
                 </View>
 
                 {this.__renderNews(rollArealist)}
-                <View style={{backgroundColor:'#dcdcdc',marginBottom:100}}>
+                <View style={{backgroundColor:'#dcdcdc',marginBottom:77}}>
                     <ScrollView style={{backgroundColor:'white',paddingBottom:20}} horizontal={true} showsHorizontalScrollIndicator={false}>
                         {classifyArealist.map((obj, i)=> {
                             return this.__renderclassifyArea(obj, i)
@@ -368,8 +368,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     news: {
-        backgroundColor: '#00bca9',
-        marginBottom: 10,
+        //backgroundColor: '#00bca9',
     },
     newsSlide: {
         backgroundColor: '#00bca9',

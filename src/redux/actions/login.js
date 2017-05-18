@@ -117,7 +117,7 @@ export function register(state: Object): Function {
     const cityCode = state.clicked == '厦门' ? '592' : '591'
     const advisersCodeEnable = state.advisersCode.length > 0?"1":"0"
 
-    const params = phxr_register(state.userName, state.phone,
+    const params = phxr_register(state.userName, state.phone,state.ymCode,
         state.password, "0", advisersCodeEnable, state.advisersCode, "0", cityCode);
 
     return dispatch => {

@@ -22,6 +22,7 @@ import {BCButton} from '../../components/Base/WBButton'
 import Button from 'react-native-button'
 import {request} from '../../request'
 import {requestSmsCode} from '../../request/leanCloud'
+import {phxr_verification_code} from '../../request/qzapi'
 import {deepFontColor, backViewColor, blackFontColor, mainColor} from '../../configure'
 import {connect} from 'react-redux'
 import {navigateReplaceIndex, navigatePush,navigatePop} from '../../redux/actions/nav'
@@ -70,18 +71,20 @@ class RegPhone extends Component {
 
         this.setState({timeLoad: true});
         var self = this;
-        requestSmsCode.params.mobilePhoneNumber = this.state.phone;
-        this.requestHandle = request(requestSmsCode, function (response) {
-            if (response.statu) {
-                console.log('test:', response)
+        const param = phxr_verification_code(this.state.phone, '6')
+        this.requestHandle = request(param, function (response) {
+            if (response.data.rspCode == "0000") {
+                //console.log('test:', response)
                 Toast.show("发送成功!");
-                self.refs[2] && self.refs[2].focus()
+                self.refs[3] && self.refs[3].focus()
                 if (self.state.isTap == false) {
                     self.setState({isTap: true});
                     self.id = setInterval(function () {
                         self.time()
                     }, 1000)
                 }
+            } else {
+                Toast.show(response.data.rspMsg);
             }
             self.setState({timeLoad: false});
         });
