@@ -32,6 +32,7 @@ import {logo} from '../../../source'
 import {phxr_app_home} from '../../request/qzapi'
 import {request} from '../../redux/actions/req'
 var DeviceInfo = require('react-native-device-info');
+import {mainColor} from '../../configure'
 @connect(
     state =>({
         data: state.req.get('phxr_app_home'),
@@ -371,7 +372,7 @@ const styles = StyleSheet.create({
         //backgroundColor: '#00bca9',
     },
     newsSlide: {
-        backgroundColor: '#00bca9',
+        backgroundColor: mainColor,
         flexDirection: 'row',
         padding: 10,
 

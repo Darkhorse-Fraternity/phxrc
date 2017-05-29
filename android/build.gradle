@@ -24,4 +24,13 @@ allprojects {
             url "http://mvn.leancloud.cn/nexus/content/repositories/public"
         }
     }
+    configurations.all {
+        resolutionStrategy {
+            eachDependency { DependencyResolveDetails details ->
+                if (details.requested.group == 'com.facebook.react' && details.requested.name == 'react-native') {
+                    details.useVersion "0.41.0" // Your real React Native version here
+                }
+            }
+        }
+    }
 }
