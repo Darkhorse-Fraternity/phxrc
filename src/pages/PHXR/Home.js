@@ -219,7 +219,7 @@ export  default  class Home extends Component {
                 </View>
 
                 {this.__renderNews(rollArealist)}
-                <View style={{backgroundColor:'#dcdcdc',marginBottom:77}}>
+                <View style={{backgroundColor:'#dcdcdc',marginBottom:75}}>
                     <ScrollView style={{backgroundColor:'white',paddingBottom:20}} horizontal={true} showsHorizontalScrollIndicator={false}>
                         {classifyArealist.map((obj, i)=> {
                             return this.__renderclassifyArea(obj, i)

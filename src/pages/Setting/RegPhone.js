@@ -25,7 +25,7 @@ import {requestSmsCode} from '../../request/leanCloud'
 import {phxr_verification_code} from '../../request/qzapi'
 import {deepFontColor, backViewColor, blackFontColor, mainColor} from '../../configure'
 import {connect} from 'react-redux'
-import {navigateReplaceIndex, navigatePush,navigatePop} from '../../redux/actions/nav'
+import {navigateReplaceIndex, navigatePush, navigatePop} from '../../redux/actions/nav'
 import {register} from '../../redux/actions/login'
 import {checkPhoneNum, Toast} from '../../util'
 
@@ -43,11 +43,12 @@ class RegPhone extends Component {
             timeLoad: false,
             userName: '',
             password: '',
-            passwordAgain:"",
-            clicked:'福州',
-            advisersCode:"",
-            showAdvisersCode:false,
-            choice:true,
+            passwordAgain: "",
+            clicked: '福州',
+            advisersCode: "",
+            showAdvisersCode: false,
+            choice: true,
+            isEP: false,
         };
     }
 
@@ -112,22 +113,21 @@ class RegPhone extends Component {
 
     _goRegist() {
 
-        if(!this.state.choice){
-            Toast.show('需要同意《融资无忧用户服务条款》才能注册。');
+        if (!this.state.choice) {
+            Toast.show('需要同意《资管无忧用户服务条款》才能注册。');
             return;
         }
 
         //判断用户名
-        if(this.state.userName.length == 0){
+        if (this.state.userName.length == 0) {
             Toast.show('用户名不能为空');
             this.refs['1'].focus();
             return;
         }
 
 
-
         var r = /^\+?[1-9][0-9]*$/;
-        if(r.test(this.state.userName)){
+        if (r.test(this.state.userName)) {
             Toast.show('用户名必须含有字母');
             this.refs['1'].focus();
             return;
@@ -149,13 +149,13 @@ class RegPhone extends Component {
         // }
 
 
-        if(this.state.password.length < 6){
+        if (this.state.password.length < 6) {
             Toast.show('密码需要大于6位数');
             this.refs['3'].focus();
             return;
         }
 
-        if(this.state.password != this.state.passwordAgain){
+        if (this.state.password != this.state.passwordAgain) {
             Toast.show('密码确定与密码不一致！');
             this.refs['4'].focus();
             return;
@@ -202,7 +202,7 @@ class RegPhone extends Component {
 
     _renderRowMain(title: string, placeholder: string, onChangeText: Function,
                    boardType: PropTypes.oneOf = 'default', autoFocus: bool = false, maxLength: number = 16,
-                   ref: string,secureTextEntry:bool=false) {
+                   ref: string, secureTextEntry: bool = false) {
 
         return (
             <View style={styles.rowMainStyle}>
@@ -245,7 +245,10 @@ class RegPhone extends Component {
         );
     }
 
-    _renderSwitch(title:string){
+
+    _renderEpSwitch(title: string) {
+        const a = require('../../../source/img/single/ardio_a.png')
+        const b = require('../../../source/img/single/ardio_b.png')
         return (
             <View>
                 <View >
@@ -253,7 +256,37 @@ class RegPhone extends Component {
                         <Text style={[styles.rowText,{marginRight:15}]}>
                             {title}
                         </Text>
-                        <Switch value={this.state.showAdvisersCode} onValueChange={(value)=>this.setState({showAdvisersCode:value})}/>
+                        <TouchableOpacity
+                            onPress={()=>this.setState({isEP:false})}
+                            style={{flexDirection:'row',alignItems:"center",justifyContent:'center'}}>
+                            <Text style={{marginRight:10}}>个人</Text>
+                            <Image style={{width:15,height:15}}
+                                   source={!this.state.isEP?b:a}/>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={()=>this.setState({isEP:true})}
+                            style={{flexDirection:'row',marginLeft:30,alignItems:"center",justifyContent:'center'}}>
+                            <Text style={{marginRight:10}}>企业</Text>
+                            <Image style={{width:15,height:15}}
+                                   source={this.state.isEP?b:a}/>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </View>
+        );
+    }
+
+
+    _renderSwitch(title: string) {
+        return (
+            <View>
+                <View >
+                    <View style={styles.row}>
+                        <Text style={[styles.rowText,{marginRight:15}]}>
+                            {title}
+                        </Text>
+                        <Switch value={this.state.showAdvisersCode}
+                                onValueChange={(value)=>this.setState({showAdvisersCode:value})}/>
                     </View>
                 </View>
             </View>
@@ -332,10 +365,12 @@ class RegPhone extends Component {
                         this.showActionSheet(title, ["福州", "厦门"])
                     })}
                     <View style={styles.line}/>
+                    {this._renderEpSwitch("会员类别")}
+                    <View style={styles.line}/>
                     {this._renderSwitch("是否有咨询顾问码:")}
                     <View style={styles.line}/>
                     {this.state.showAdvisersCode && this._renderRowMain('咨询顾问码:', '非必填',
-                        (text) => this.setState({advisersCode: text}), 'default', false, 50, "5",false
+                        (text) => this.setState({advisersCode: text}), 'default', false, 50, "5", false
                     )}
                 </View>
 
@@ -371,7 +406,7 @@ class RegPhone extends Component {
                     <Button
                         onPress={this._gowebView}
                         style={styles.protocolSuf}>
-                        《融资无忧用户服务条款》
+                        《资管无忧用户服务条款》
                     </Button>
                 </View>
                 <BCButton
@@ -423,7 +458,7 @@ const styles = StyleSheet.create({
     },
     textStyle: {
         // flex: ,
-        width: 120,
+        width: 135,
         fontSize: 14,
         color: 'rgb(120,120,120)',
     },
@@ -453,13 +488,13 @@ const styles = StyleSheet.create({
         marginLeft: 29,
         marginRight: 29,
         marginTop: 80,
-        marginBottom:80,
+        marginBottom: 80,
         height: 40,
         justifyContent: 'center',
     },
 
     protocolPre: {
-        marginLeft:5,
+        marginLeft: 5,
         fontSize: 13,
         color: '#9e9e9e',
     },
@@ -472,7 +507,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop:25,
+        marginTop: 25,
     },
     row: {
         marginVertical: 5,
@@ -490,6 +525,7 @@ const styles = StyleSheet.create({
     rowText: {
         fontSize: 14,
         // fontWeight: '500',
+        width: 120,
         color: 'rgb(120,120,120)',
     },
     arrowView: {

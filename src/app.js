@@ -32,4 +32,4 @@ export default class App extends Component {
 }
 
 // var WhiteBoardRN = require('../example_advanced');
-AppRegistry.registerComponent('PHXR', () => App);
+AppRegistry.registerComponent('PHXRC', () => App);

@@ -56,7 +56,7 @@ const tag = 1;
 
 //主题色彩
 const themeColorConfig = {
-    mainColor: '#00bca9', //主色彩，用于navbar 按钮颜色等、
+    mainColor: "#ff7575", //主色彩，用于navbar 按钮颜色等、
     backViewColor: '#f7f5f6',
     lightMainColor: '#c18379', //主色彩，用于navbar 按钮颜色等、
     containingColor: '#ffffff', //内含主色彩

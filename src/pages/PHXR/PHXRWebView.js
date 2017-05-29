@@ -27,6 +27,7 @@ import {bindActionCreators} from 'redux';
 //static displayName = PHXRWebView
 import {navigatePush, navigatePop, navigateRefresh} from '../../redux/actions/nav';
 import ExceptionView, {ExceptionType} from '../../components/ExceptionView';
+import {mainColor} from '../../configure'
 const WEBVIEW_REF = 'webview';
 @connect(
     state =>({
@@ -284,7 +285,7 @@ const styles = StyleSheet.create({
     },
     navigationHeader: {
         paddingTop:Platform.OS === 'ios'?20:0,
-        backgroundColor: '#00bca9',
+        backgroundColor: mainColor,
         height: Platform.OS === 'ios' ? 64 : 48,
         //borderBottomWidth: 1,
         alignItems: 'center',
@@ -297,7 +298,7 @@ const styles = StyleSheet.create({
 export class GW extends Component {
     render(): ReactElement<any> {
         return (
-            <PHXRWebView url="http://103.236.253.138:9090/phxrProject/hy/h5/hy-gw.html"/>
+            <PHXRWebView url="http://103.236.253.138:9090/phxrProject/hy/h5/zg-gw.html"/>
         );
     }
 }
@@ -305,7 +306,7 @@ export class GW extends Component {
 export class MSG extends Component {
     render(): ReactElement<any> {
         return (
-            <PHXRWebView url="http://103.236.253.138:9090/phxrProject/hy/h5/hy-xx.html"/>
+            <PHXRWebView url="http://103.236.253.138:9090/phxrProject/hy/h5/zg-xx.html"/>
         );
     }
 }
@@ -313,7 +314,7 @@ export class MSG extends Component {
 export class ZG extends Component {
     render(): ReactElement<any> {
         return (
-            <PHXRWebView url="http://103.236.253.138:9090/phxrProject/hy/h5/hy-hy.html"/>
+            <PHXRWebView url="http://103.236.253.138:9090/phxrProject/hy/h5/zg-hy.html"/>
         );
     }
 }

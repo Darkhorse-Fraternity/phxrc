@@ -121,7 +121,7 @@ export default class NavBar extends Component {
             {...this.props}
             //ref={header=>NavigationManager.navigationHeader=header}
             renderTitleComponent={this._renderTitleComponent}
-            style={[styles.navigationHeader,{backgroundColor:scene.route.barColor||'#00bca9'}]}
+            style={[styles.navigationHeader,{backgroundColor:scene.route.barColor||mainColor}]}
             renderRightComponent={renderRightComponent}
             renderLeftComponent={renderLeftComponent}
             onNavigateBack={this._backEvent}
@@ -135,7 +135,7 @@ export default class NavBar extends Component {
 
 const styles = StyleSheet.create({
   navigationHeader: {
-    backgroundColor: '#00bca9',
+    backgroundColor: mainColor,
     height: Platform.OS === 'ios' ? 64 : 48,
     borderBottomWidth: 0,
   },

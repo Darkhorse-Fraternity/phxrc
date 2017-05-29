@@ -1,4 +1,4 @@
-package com.phxr;
+package com.phxrc;
 
 import android.app.Application;
 

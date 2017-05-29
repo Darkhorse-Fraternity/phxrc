@@ -9,7 +9,8 @@ import { methodType, cacheType } from './'
  *   4.1 注册
  *
  */
-export function phxr_register(userName,phoneNo,verificationCode,pwd,registType,hasAdvisersCode,advisersCode,province,city) {
+export function phxr_register(userName,phoneNo,verificationCode,pwd,registType,
+                              hasAdvisersCode,advisersCode,province,city) {
     return {
         host:'103.236.253.138:9090',
         path:'/phxrProject/app/phxr/ucenter/register',
@@ -483,7 +484,7 @@ export function phxr_app_home(versionCode,platformType) {
         params:{
             versionCode,
             platformType:platformType == 'ios'? "0" : "1",
-            appType:0,
+            appType:3,
         },
     }
 }
@@ -497,7 +498,7 @@ export function phxr_app_loginOut(phoneNo) {
         method:methodType.post,
         params:{
             ...param,
-            userType:0,
+            userType:3,
         },
     }
 }
