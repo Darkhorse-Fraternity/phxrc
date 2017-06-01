@@ -298,7 +298,7 @@ const styles = StyleSheet.create({
 export class GW extends Component {
     render(): ReactElement<any> {
         return (
-            <PHXRWebView url="http://103.236.253.138:9090/phxrProject/hy/h5/zg-gw.html"/>
+            <PHXRWebView url="http://103.236.253.138:9090/phxrProject/zg/h5/zg-gw.html"/>
         );
     }
 }
@@ -306,7 +306,7 @@ export class GW extends Component {
 export class MSG extends Component {
     render(): ReactElement<any> {
         return (
-            <PHXRWebView url="http://103.236.253.138:9090/phxrProject/hy/h5/zg-xx.html"/>
+            <PHXRWebView url="http://103.236.253.138:9090/phxrProject/zg/h5/zg-xx.html"/>
         );
     }
 }
@@ -314,7 +314,7 @@ export class MSG extends Component {
 export class ZG extends Component {
     render(): ReactElement<any> {
         return (
-            <PHXRWebView url="http://103.236.253.138:9090/phxrProject/hy/h5/zg-hy.html"/>
+            <PHXRWebView url="http://103.236.253.138:9090/phxrProject/zg/h5/zg-zg.html"/>
         );
     }
 }
