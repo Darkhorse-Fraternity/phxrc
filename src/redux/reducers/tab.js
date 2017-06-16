@@ -34,7 +34,7 @@ const unLoginTabs = [
     {key: 'ZG', selectImage: menu_leader, unSelectImage: menu_leader_click, title: '资管'},
     {key: 'GW', selectImage: menu_adviser, unSelectImage: menu_adviser_click, title: '顾问'},
     {key: 'MSG', selectImage: menu_news, unSelectImage: menu_news_click, title: '消息'},
-    {key: 'PersonInfo', selectImage: menu_my, unSelectImage: menu_my_click, title: '我的'},
+    {key: 'WD', selectImage: menu_my, unSelectImage: menu_my_click, title: '我的'},
 ]
 
 const loginTabs = unLoginTabs

@@ -186,7 +186,9 @@ class RegPhone extends Component {
                 wrapProps,
             },
             (buttonIndex) => {
-                this.setState({clicked: BUTTONS[buttonIndex]});
+                if(buttonIndex != BUTTONS.length - 1 ){
+                    this.setState({clicked: BUTTONS[buttonIndex]});
+                }
             });
     }
 
@@ -259,14 +261,14 @@ class RegPhone extends Component {
                         <TouchableOpacity
                             onPress={()=>this.setState({isEP:false})}
                             style={{flexDirection:'row',alignItems:"center",justifyContent:'center'}}>
-                            <Text style={{marginRight:10}}>个人</Text>
+                            <Text style={{marginRight:10}}>融资</Text>
                             <Image style={{width:15,height:15}}
                                    source={!this.state.isEP?b:a}/>
                         </TouchableOpacity>
                         <TouchableOpacity
                             onPress={()=>this.setState({isEP:true})}
                             style={{flexDirection:'row',marginLeft:30,alignItems:"center",justifyContent:'center'}}>
-                            <Text style={{marginRight:10}}>企业</Text>
+                            <Text style={{marginRight:10}}>资管</Text>
                             <Image style={{width:15,height:15}}
                                    source={this.state.isEP?b:a}/>
                         </TouchableOpacity>
@@ -364,8 +366,8 @@ class RegPhone extends Component {
                     {this._renderRow('请选择所在城市:', this.state.clicked, (title) => {
                         this.showActionSheet(title, ["福州", "厦门"])
                     })}
-                    {/*<View style={styles.line}/>*/}
-                    {/*{this._renderEpSwitch("会员类别")}*/}
+                    <View style={styles.line}/>
+                    {this._renderEpSwitch("顾问类型")}
                     <View style={styles.line}/>
                     {this._renderSwitch("是否有咨询顾问码:")}
                     <View style={styles.line}/>

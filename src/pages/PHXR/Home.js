@@ -83,14 +83,14 @@ export  default  class Home extends Component {
         return (
             <TouchableOpacity
                 onPress={()=>{
-                    if(!this.props.isLogin){
+                    if(true){
                                     push('LoginView')
                                 }else {
                                   push({key:'WebView',url:classifyArea.activityUrl,
                                   headers:{userId:this.props.userId+''}})
                                }
                      }}
-                style={{marginLeft:25}}
+                style={{width:Dimensions.get('window').width/4,alignItems:'center'}}
                 key={'key_'+i}>
                 {classifyArea.ifRedShow == 1 && (<View style={styles.redTip}/>)}
                 <Image
