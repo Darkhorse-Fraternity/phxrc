@@ -40,7 +40,7 @@ class RegPhone extends Component {
             isTap: false,
             timeLoad: false,
             password: '',
-            clicked: -1,
+            clicked: 1,
         };
     }
 
@@ -256,9 +256,9 @@ class RegPhone extends Component {
 
                     <View style={{height:20}}/>
 
-                    {this._renderRow(type, this.state.clicked, () => {
-                        this.showActionSheet("请选择顾问类型", ["融资顾问", "资管顾问"])
-                    })}
+                    {/*{this._renderRow(type, this.state.clicked, () => {*/}
+                        {/*this.showActionSheet("请选择顾问类型", ["融资顾问", "资管顾问"])*/}
+                    {/*})}*/}
 
                     {this._renderRowMain(user, '用户名/手机号:', '请填入用户名或手机号码',
                         (text) => this.setState({phone: text}), 'default', false, 16, "2"

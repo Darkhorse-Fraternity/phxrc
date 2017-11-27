@@ -230,8 +230,6 @@ export class ZG extends Component {
         return (             <PHXRWebView url="http://103.236.253.138:9090/phxrProject/zg/h5/zg-zg.html"/>         );
     }
 }
-
-
 export class WD extends Component {
     render(): ReactElement<any> {
         return (

@@ -347,7 +347,7 @@
 		C5795D33A59FFF7734212F5B /* Pods-PHXRC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PHXRC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PHXRC/Pods-PHXRC.debug.xcconfig"; sourceTree = "<group>"; };
 		CC0242881DF69F4C0045A14A /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		CC08B1F51E82827700189D66 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		CC1FD98C1E48C51000ECB2CF /* PHXRC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = PHXRC.entitlements; path = PHXRC/PHXRC.entitlements; sourceTree = "<group>"; };
+		CC0F09831F6B69DA00093EC6 /* PHXRC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = PHXRC.entitlements; path = PHXRC/PHXRC.entitlements; sourceTree = "<group>"; };
 		CC3E39A51E2622570019B85F /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		CC3E39A71E2622610019B85F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		CC3E39A91E2622690019B85F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -527,7 +527,7 @@
 		13B07FAE1A68108700A75B9A /* PHXRC */ = {
 			isa = PBXGroup;
 			children = (
-				CC1FD98C1E48C51000ECB2CF /* PHXRC.entitlements */,
+				CC0F09831F6B69DA00093EC6 /* PHXRC.entitlements */,
 				CCC010561DF9485700613165 /* InfoPlist.strings */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -844,7 +844,7 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -1376,6 +1376,7 @@
 			baseConfigurationReference = C5795D33A59FFF7734212F5B /* Pods-PHXRC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PHXRC/PHXRC.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 3XYLE4WU79;
@@ -1429,6 +1430,7 @@
 			baseConfigurationReference = 5D8C4A73B937A1EB53019824 /* Pods-PHXRC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PHXRC/PHXRC.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3XYLE4WU79;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-qq/ios/RCTQQAPI/**";

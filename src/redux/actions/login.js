@@ -83,7 +83,7 @@ export function login(state: Object): Function {
 
         dispatch(_loginRequest());
 
-        const parame = phxr_login(state.phone,state.password,state.clicked === 0?3:4)
+        const parame = phxr_login(state.phone,state.password,state.clicked === 0?3:3)
 
         return request(parame, (response)=> {
 
@@ -118,7 +118,7 @@ export function register(state: Object): Function {
     const advisersCodeEnable = state.advisersCode.length > 0?"1":"0"
 
     const params = phxr_register(state.userName, state.phone,state.ymCode,
-        state.password, state.isEP?"4":"3", advisersCodeEnable, state.advisersCode, "0", cityCode);
+        state.password, state.isEP?"3":"3", advisersCodeEnable, state.advisersCode, "0", cityCode);
 
     return dispatch => {
         dispatch(_loginRequest());

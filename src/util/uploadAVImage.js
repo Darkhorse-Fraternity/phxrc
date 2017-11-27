@@ -1,4 +1,3 @@
-
 /*!
  *
  * https://leancloud.cn/docs/leanstorage_guide-js.html#从本地路径构建文件
@@ -8,58 +7,41 @@
 
 'use strict';
 
-// import {LeanCloud_APP_ID,LeanCloud_APP_KEY} from '../configure/leancloud'
-// import AV from 'leancloud-storage';
-// AV.initialize(LeanCloud_APP_ID, LeanCloud_APP_KEY);
-// AV.init({
-//   appId: LeanCloud_APP_ID,
-//   appKey: LeanCloud_APP_KEY
-// });
+import {defaultHost} from '../configure'
 
-export function  upload(image:string,callBack:Function){
+export function uploadPHXRImage(files) {
+    const body = new FormData()
+    files.map((item)=> {
+        const file = {
+            uri: item.uri,
+            name: item.filename||( Math.random()*700 + Date.parse(new Date()) + "_IMG.JPG"),
+            type: "image/jpg",
+        }
+        body.append('file', file)
+    })
+    const url = "http://"+ "103.236.253.138:8088" + "/uploadImage"
+    return  fetch(url, {
+        method: 'POST',
+        body,
+    })
 
-    // const file = new AV.File('image.jpg', {
-    //   blob: {
-    //     'uri':image,
-    //     // height:100,
-    //     // width:100,
-    //     isStored:true,
-    //   },
-    //   owner:AV.User.currentAsync(),
-    // });
-    // // console.log('files:',file);
-    // file.save()
-    //   .then((res) => {
-    //     // console.log('Uploaded: ' + res.url())
-    //     // console.log('Uploaded: ' + JSON.stringify(res));
-    //     callBack(true,res);
-    //   })
-    //   .catch((err) => {
-    //     console.log('Error: ' + err.message);
-    //     callBack(false);
-    //   });
 }
 
 
-export function uploadFilesByLeanCloud(imageURLs:any){
-
-  // const promises = imageURLs.map((imageURL,i)=>{
-  //
-  //     const file = new AV.File('image.jpg', {
-  //       blob: {
-  //         'uri':imageURL,
-  //         // height:100,
-  //         // width:100,
-  //         isStored:true,
-  //       },
-  //       owner:AV.User.currentAsync(),
-  //     });
-  //     // console.log('files:',file);
-  //     return file.save();
-  //
-  //   })
-  //
-  //
-  // return  Promise.all(promises);
+export function uploadImage(url,files) {
+    const body = new FormData()
+    files.map((item)=> {
+        const file = {
+            uri: item.uri,
+            name: item.filename||( Math.random()*700 + Date.parse(new Date()) + "_IMG.JPG"),
+            type: "image/jpg",
+        }
+        body.append('file', file)
+    })
+    // const url = "http://"+ "103.236.253.138:8088" + "/uploadImage"
+    return  fetch(url, {
+        method: 'POST',
+        body,
+    })
 
 }

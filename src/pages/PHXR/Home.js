@@ -30,7 +30,7 @@ import {Button, WhiteSpace} from 'antd-mobile';
 import {icon_class} from '../../../source'
 import {logo} from '../../../source'
 import {phxr_app_home} from '../../request/qzapi'
-import {request} from '../../redux/actions/req'
+import {request, reqChangeData} from '../../redux/actions/req'
 var DeviceInfo = require('react-native-device-info');
 import {mainColor} from '../../configure'
 @connect(
@@ -50,6 +50,15 @@ import {mainColor} from '../../configure'
 
             })
 
+        },
+        cleanRed: (key, i)=> {
+            dispatch((dispatch, getState)=> {
+                const data = getState().req.get('phxr_app_home').get('data').toJS()
+                // console.log('userType:', userType);
+                data[key][i]['ifRedShow'] = 0
+
+                dispatch(reqChangeData('phxr_app_home', data))
+            })
         }
     })
 )
@@ -83,11 +92,13 @@ export  default  class Home extends Component {
         return (
             <TouchableOpacity
                 onPress={()=>{
-                    if(true){
+                    if(!this.props.isLogin){
                                     push('LoginView')
                                 }else {
                                   push({key:'WebView',url:classifyArea.activityUrl,
                                   headers:{userId:this.props.userId+''}})
+                                  classifyArea.ifRedShow == 1 && this.props.cleanRed('classifyArealist',i)
+
                                }
                      }}
                 style={{width:Dimensions.get('window').width/4,alignItems:'center'}}
@@ -112,6 +123,7 @@ export  default  class Home extends Component {
                 style={{backgroundColor:'white',alignItems:'center'}}
                 onPress={()=>{
                          push({key:'WebView',url:classifyArea.activityUrl})
+                         classifyArea.ifRedShow == 1 && this.props.cleanRed('hotArealist',i)
                      }}
                 key={'key_'+i}>
                 {classifyArea.ifRedShow == 1 && (<View style={[styles.redTip,{top:-6,right:6,}]}/>)}
@@ -161,7 +173,7 @@ export  default  class Home extends Component {
 
     render(): ReactElement<any> {
         const data = this.props.data.toJS().data
-        const load = this.props.data.toJS().load|| false
+        const load = this.props.data.toJS().load || false
 
 
         if (!data) return ( <ScrollView
@@ -201,7 +213,7 @@ export  default  class Home extends Component {
                         activeDotStyle={{width:6,height:6,borderRadius:3}}
                         showsPagination={true} autoplayTimeout={20}
                         removeClippedSubviews={false}
-                        autoplay={true} >
+                        autoplay={true}>
                         {activeArealist.map((image, i)=> {
                             return (
                                 <TouchableOpacity
@@ -221,7 +233,8 @@ export  default  class Home extends Component {
 
                 {this.__renderNews(rollArealist)}
                 <View style={{backgroundColor:'#dcdcdc',marginBottom:75}}>
-                    <ScrollView style={{backgroundColor:'white',paddingBottom:20}} horizontal={true} showsHorizontalScrollIndicator={false}>
+                    <ScrollView style={{backgroundColor:'white',paddingBottom:20}} horizontal={true}
+                                showsHorizontalScrollIndicator={false}>
                         {classifyArealist.map((obj, i)=> {
                             return this.__renderclassifyArea(obj, i)
                         })}
@@ -294,7 +307,7 @@ const styles = StyleSheet.create({
         elevation: 5,
         zIndex: 10,
     },
-    swiper:{
+    swiper: {
         backgroundColor: 'white',
     },
     slide: {
@@ -331,7 +344,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
     },
     hotArea: {
-        marginTop:10,
+        marginTop: 10,
         flexWrap: "wrap",
         flexDirection: 'row',
         width: Dimensions.get('window').width,
@@ -344,14 +357,14 @@ const styles = StyleSheet.create({
         height: (Dimensions.get('window').width) / 4,
         borderColor: 'rgba(200,200,200,0.2)',
         borderWidth: StyleSheet.hairlineWidth,
-        backgroundColor:'white'
+        backgroundColor: 'white'
     },
     hotAreaImage: {
         width: (Dimensions.get('window').width) / 8,
         height: (Dimensions.get('window').width) / 8,
     },
     header: {
-        height:Platform.OS== 'ios'? 64:44,
+        height: Platform.OS == 'ios' ? 64 : 44,
         width: Dimensions.get('window').width,
         alignItems: 'center',
         flexDirection: 'row',

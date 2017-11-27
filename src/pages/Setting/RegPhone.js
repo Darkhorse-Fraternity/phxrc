@@ -343,7 +343,7 @@ class RegPhone extends Component {
 
 
                     <View style={{flexDirection:'row'}}>
-                        {this._renderRowMain('验证码:', '输入您收到的验证码',
+                        {this._renderRowMain('验证码:', '请输入验证码',
                             (text) => {
                                 this.setState({ymCode: text})
                             },
@@ -363,11 +363,11 @@ class RegPhone extends Component {
                         </BCButton>
                     </View>
                     <View style={styles.line}/>
-                    {this._renderRow('请选择所在城市:', this.state.clicked, (title) => {
-                        this.showActionSheet(title, ["福州", "厦门"])
-                    })}
-                    <View style={styles.line}/>
-                    {this._renderEpSwitch("顾问类型")}
+                    {/*{this._renderRow('请选择所在城市:', this.state.clicked, (title) => {*/}
+                        {/*this.showActionSheet(title, ["福州", "厦门"])*/}
+                    {/*})}*/}
+                    {/*<View style={styles.line}/>*/}
+                    {/*{this._renderEpSwitch("顾问类型")}*/}
                     <View style={styles.line}/>
                     {this._renderSwitch("是否有咨询顾问码:")}
                     <View style={styles.line}/>
@@ -448,7 +448,7 @@ const styles = StyleSheet.create({
         // backgroundColor:'red'
     },
     buttonContainerStyle: {
-        marginRight: 15,
+        marginRight: 10,
         marginLeft: -5,
         height: 35,
         marginVertical: 5,

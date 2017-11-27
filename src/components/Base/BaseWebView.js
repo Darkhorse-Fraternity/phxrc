@@ -12,6 +12,7 @@ import  {
     Platform,
     Linking
 } from 'react-native';
+import imagePicker from '../../util/imagePicker'
 import * as immutable from 'immutable';
 import {navbarHeight,screenHeight} from '../../util';
 // import {httpHeader} from '../../configure';
@@ -24,7 +25,7 @@ import {addParams} from '../../request/useMeth'
 
 // import WebViewAndroid from './WebViewAndroid'
 import {logout} from '../../redux/actions/login'
-
+import {uploadImage} from '../../util/uploadAVImage'
 // console.log('WebViewAndroid:', WebViewAndroid);
 const WebView = Platform.OS == 'ios'? WebViewIOS:WebViewIOS
 // const WebView = WebViewIOS
@@ -54,6 +55,30 @@ import createInvoke from 'react-native-webview-invoke/native'
         },
         logout:()=>{
             dispatch(logout())
+        },
+        uploadImage:  (url)=>{
+            console.log('url:', url);
+            console.log('url:');
+            return new Promise(function (resolve, reject) {
+                // setTimeout(() => resolve("111"), 1);
+                const opt = {
+                    title: '添加图片',
+                    maxWidth: 2000, // photos only
+                    maxHeight: 2000, // photos only
+                }
+
+                url && url.length > 0 && imagePicker(opt, (response)=> {
+                    // console.log('response:', response);
+                    if( response.uri){
+                        // resolve(response.uri)
+                        uploadImage(url,[response])
+                            .then(res=>resolve(res))
+                            .catch(e=>reject(e))
+                    }
+                })
+            })
+
+
         }
 
     })
@@ -119,8 +144,14 @@ export  default class BaseWebView extends Component {
         this.props.push('LoginView')
     }
 
+    clearCache = () =>{
+
+    }
+
     webview: WebView
-    invoke = createInvoke(() => this.webview)
+    invoke = createInvoke(() =>{
+        return this.webview || {}
+    } )
     sendUserID:Function
 
 
@@ -129,7 +160,8 @@ export  default class BaseWebView extends Component {
             .define('gologin', this.gologin)
             .define('logout', this.props.logout)
             .define('share', this.props.share)
-
+            .define('clearCache',this.props.clearCache)
+            .define('uploadImage',this.props.uploadImage)
         this.sendUserID = this.invoke.bind('sendUserID')
         // console.log('test:', this.props.userI);
         // console.log('this.props.userId:', this.props.userId);
@@ -143,6 +175,10 @@ export  default class BaseWebView extends Component {
 
     }
 
+    componentWillUnmount() {
+        this.timer && clearTimeout(this.timer);
+    }
+
     _onNavigationStateChange(state:Object){
         // console.log('state:',state);
         if(state.title && state.title.length > 0 && !state.title.startsWith('103.236.253') ){
@@ -153,7 +189,13 @@ export  default class BaseWebView extends Component {
     }
 
     _onError(error:Object){
-        this.webview.reload()
+        // this.webview && this.webview.reload()
+        this.timer && clearTimeout(this.timer);
+        this.timer = setTimeout(
+            () => { this.webview && this.webview.reload() },
+            3000
+        );
+
         // console.log("webError:",error);
     }
     _onLoadStart(event){
@@ -192,7 +234,7 @@ export  default class BaseWebView extends Component {
             Linking.canOpenURL(event.url)
                 .then(supported => {
                     if(supported){
-                        return Linking.openURL(url);
+                        return Linking.openURL(event.url);
                         // return false;
                     }else{
                         return false;
@@ -208,8 +250,7 @@ export  default class BaseWebView extends Component {
 
 
 
-    webview: WebView
-    invoke = createInvoke(() => this.webview)
+
     render() {
         //  console.log(this.props.scene);
         // console.log(this.props.scene .route.url);
@@ -234,16 +275,16 @@ export  default class BaseWebView extends Component {
                     style={styles.webView}
                     source={{uri: url,headers:headers}}
                     javaScriptEnabled={true}
-                    domStorageEnabled={true}
+                    domStorageEnabled={false}
                     decelerationRate="normal"
                     onShouldStartLoadWithRequest={this._onShouldStartLoadWithRequest.bind(this)}
                     //javaScriptEnabled={false}
                     onNavigationStateChange={this._onNavigationStateChange.bind(this)}
                     startInLoadingState={true}
                     scalesPageToFit={this.state.scalesPageToFit}
-                    onError={this._onError}
+                    onError={this._onError.bind(this)}
                     onLoadStart={this._onLoadStart}
-                    onLoad={this._onLoad} //
+                    onLoad={this._onLoad.bind(this)} //
                     onMessage={this.invoke.listener}
                     //onMessage={()=>{}}
                     //onShouldStartLoadWithRequest={this._onShouldStartLoadWithRequest.bind(this)}//iOS,Android 咱么处理
